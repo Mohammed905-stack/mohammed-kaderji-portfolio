@@ -121,7 +121,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Google Gemini 3.6 Flash & Jupyter Notebook integration"
     ],
     tags: ["Python", "Streamlit", "Gemini 3.6 Flash", "Jupyter"],
-    liveUrl: "[INSERT YOUR LIVE PERSONAL ASSISTANT STREAMLIT URL]",
+    liveUrl: "https://ai-personal-assistant-464q23nsnxufete6hooju5.streamlit.app/",
     thumbnail: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1200&q=80",
     badge: "Port 8501",
     accentColor: "from-cyan-500 to-blue-600",
@@ -144,7 +144,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Persona/Tone control: Professional, Funny, Formal, Friendly"
     ],
     tags: ["Python", "Streamlit", "Gemini 3.6 Flash"],
-    liveUrl: "[INSERT YOUR LIVE CONTENT CREATOR STREAMLIT URL]",
+    liveUrl: "https://ai-content-creator-7qzen2ftgmrssp4jgf2rzj.streamlit.app/",
     thumbnail: "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=80",
     badge: "Port 8502",
     accentColor: "from-purple-500 to-pink-600",
@@ -167,7 +167,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Strict in-context Q&A and automated bullet summarization"
     ],
     tags: ["Python", "Streamlit", "PyPDF", "Gemini 3.6 Flash"],
-    liveUrl: "[INSERT YOUR LIVE PDF ASSISTANT STREAMLIT URL]",
+    liveUrl: "https://ai-personal-assistant-464q23nsnxufete6hooju5.streamlit.app/",
     thumbnail: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80",
     badge: "Port 8503",
     accentColor: "from-emerald-500 to-teal-600",

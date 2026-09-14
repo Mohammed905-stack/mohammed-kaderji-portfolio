@@ -85,7 +85,7 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
     cardBorderAccent: "hover:border-cyan-400/60",
     portStatus: "Local Host :8501 • Active",
     contextType: "chatbot",
-    liveAppUrl: "[INSERT YOUR LIVE PERSONAL ASSISTANT STREAMLIT URL]"
+    liveAppUrl: "https://ai-personal-assistant-464q23nsnxufete6hooju5.streamlit.app/"
   },
   {
     id: "ai-content-creator-application",
@@ -110,7 +110,7 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
     cardBorderAccent: "hover:border-purple-400/60",
     portStatus: "Local Host :8502 • Active",
     contextType: "creator",
-    liveAppUrl: "[INSERT YOUR LIVE CONTENT CREATOR STREAMLIT URL]"
+    liveAppUrl: "https://ai-content-creator-7qzen2ftgmrssp4jgf2rzj.streamlit.app/"
   },
   {
     id: "ai-pdf-assistant-document-intelligence",
@@ -136,7 +136,7 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
     cardBorderAccent: "hover:border-emerald-400/60",
     portStatus: "Local Host :8503 • Active",
     contextType: "docai",
-    liveAppUrl: "[INSERT YOUR LIVE PDF ASSISTANT STREAMLIT URL]"
+    liveAppUrl: "https://ai-personal-assistant-464q23nsnxufete6hooju5.streamlit.app/"
   },
   {
     id: "autonomous-linkedin-content-pipeline",
