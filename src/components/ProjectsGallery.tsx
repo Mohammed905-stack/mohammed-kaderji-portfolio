@@ -77,7 +77,7 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
       "Stream Response Handler: Token-by-token text streaming into formatted Markdown containers",
       "404 Deprecation Shield: Fallback model router preventing abrupt service failure during upstream model migration"
     ],
-    thumbnail: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1200&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
     badge: "Port 8501 • Gemini 3.6",
     accentColor: "from-cyan-500 to-blue-600",
     themeGlow: "rgba(6, 182, 212, 0.2)",
