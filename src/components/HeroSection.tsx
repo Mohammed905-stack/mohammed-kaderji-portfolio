@@ -11,8 +11,7 @@ import {
   CheckCircle2,
   Linkedin,
   Instagram,
-  ArrowUpRight,
-  User
+  ArrowUpRight
 } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
@@ -21,8 +20,6 @@ interface HeroSectionProps {
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
-  const [imageError, setImageError] = useState(false);
-
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -78,21 +75,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           />
           
           <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full p-1 bg-[#0B0F19] ring-2 ring-cyan-500/40 shadow-2xl overflow-hidden transition-all duration-300">
-            {!imageError ? (
-              <img
-                id="hero-headshot-img"
-                src="/profile.jpg"
-                alt="Mohammad Kaderji – Professional Headshot"
-                referrerPolicy="no-referrer"
-                onError={() => setImageError(true)}
-                className="w-full h-full object-cover object-top rounded-full transition-transform duration-700 ease-out group-hover:scale-105"
-              />
-            ) : (
-              <div className="w-full h-full rounded-full bg-gradient-to-br from-slate-800 to-slate-950 flex flex-col items-center justify-center p-3 text-center">
-                <User className="w-12 h-12 text-cyan-400 mb-1" />
-                <span className="text-xs text-slate-200 font-semibold">Mohammad Kaderji</span>
-              </div>
-            )}
+            <img
+              id="hero-headshot-img"
+              src="https://i.postimg.cc/YCGPnX6d/profile-jpg.jpg"
+              alt="Mohammad Kaderji – Professional Headshot"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover object-top rounded-full transition-transform duration-700 ease-out group-hover:scale-105"
+            />
           </div>
         </motion.div>
 

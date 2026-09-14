@@ -2,5 +2,7 @@
   "name": "Mohammed Kaderji Portfolio",
   "description": "Portfolio of Mohammed Kaderji – Bridging AI & Supply Chain Operations. Featuring AI projects, EXIM Logistics experience, and contact details.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
