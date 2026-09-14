@@ -26,25 +26,46 @@ export const ContactSection: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage(null);
 
-    // Format mailto link targeted to mohdkaderji022@gmail.com
-    const emailSubject = encodeURIComponent(formData.subject || `Inquiry from ${formData.name} via Portfolio`);
-    const emailBody = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
-    const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${emailSubject}&body=${emailBody}`;
+    try {
+      const response = await fetch('https://formspree.io/f/mljeqaag', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        })
+      });
 
-    setTimeout(() => {
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        const data = await response.json().catch(() => null);
+        if (data && data.errors && data.errors.length > 0) {
+          setErrorMessage(data.errors.map((err: { message: string }) => err.message).join(', '));
+        } else {
+          setErrorMessage('Unable to send message via Formspree. Please retry or email directly.');
+        }
+      }
+    } catch {
+      // If network/CORS error occurs, submit natively via the HTML form
+      const targetForm = e.currentTarget;
+      targetForm.submit();
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-      // Automatically trigger user's default email client
-      window.location.href = mailtoUrl;
-    }, 600);
+    }
   };
 
   const copyEmailToClipboard = () => {
@@ -231,9 +252,9 @@ export const ContactSection: React.FC = () => {
                 <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h4 className="text-2xl font-bold text-white">Message Prepared & Ready!</h4>
+                <h4 className="text-2xl font-bold text-white">Message Delivered Successfully!</h4>
                 <p className="text-slate-300 text-sm max-w-md">
-                  Your message is routed directly to <strong className="text-cyan-300">{PERSONAL_INFO.email}</strong>. Choose your preferred way to send:
+                  Thank you! Your transmission has been sent directly to <strong className="text-cyan-300">{PERSONAL_INFO.email}</strong>. I will review your inquiry and reply promptly.
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
@@ -244,7 +265,7 @@ export const ContactSection: React.FC = () => {
                     rel="noopener noreferrer"
                     className="px-5 py-2.5 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-sm transition-all flex items-center gap-2 shadow-lg shadow-cyan-400/20 interactive-element"
                   >
-                    <span>Send via Gmail Web</span>
+                    <span>Open in Gmail</span>
                     <ArrowUpRight className="w-4 h-4" />
                   </a>
 
@@ -288,16 +309,28 @@ export const ContactSection: React.FC = () => {
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} id="portfolio-contact-form" className="space-y-5">
+              <form
+                action="https://formspree.io/f/mljeqaag"
+                method="POST"
+                onSubmit={handleSubmit}
+                id="portfolio-contact-form"
+                className="space-y-5"
+              >
                 <div className="flex items-center justify-between pb-3 border-b border-slate-800">
                   <div>
                     <h4 className="text-lg font-bold text-white">Send a Direct Message</h4>
                     <p className="text-xs text-slate-400">Routes straight to {PERSONAL_INFO.email}</p>
                   </div>
                   <span className="text-[11px] text-cyan-400 font-mono bg-cyan-950/40 px-2.5 py-1 rounded border border-cyan-500/30">
-                    Live Form
+                    Formspree Verified
                   </span>
                 </div>
+
+                {errorMessage && (
+                  <div className="p-3.5 rounded-xl bg-red-950/50 border border-red-500/40 text-red-200 text-xs flex items-center gap-2">
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Name Input */}
@@ -307,6 +340,7 @@ export const ContactSection: React.FC = () => {
                     </label>
                     <input
                       id="contact-name"
+                      name="name"
                       type="text"
                       required
                       placeholder="e.g. Alex Henderson"
@@ -323,6 +357,7 @@ export const ContactSection: React.FC = () => {
                     </label>
                     <input
                       id="contact-email"
+                      name="email"
                       type="email"
                       required
                       placeholder="e.g. alex@company.com"
@@ -340,6 +375,7 @@ export const ContactSection: React.FC = () => {
                   </label>
                   <input
                     id="contact-subject"
+                    name="subject"
                     type="text"
                     required
                     placeholder="e.g. Opportunity in Shipping Logistics / AI Workflow"
@@ -356,6 +392,7 @@ export const ContactSection: React.FC = () => {
                   </label>
                   <textarea
                     id="contact-message"
+                    name="message"
                     required
                     rows={4}
                     placeholder="Provide details about the role, project, or operational inquiry..."
@@ -373,7 +410,7 @@ export const ContactSection: React.FC = () => {
                   className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-cyan-400 to-sky-400 hover:from-cyan-300 hover:to-sky-300 text-slate-950 font-bold text-sm sm:text-base shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30 transition-all flex items-center justify-center gap-2 group interactive-element"
                 >
                   <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform" />
-                  <span>{isSubmitting ? 'Preparing Transmission...' : `Send Message to ${PERSONAL_INFO.email}`}</span>
+                  <span>{isSubmitting ? 'Transmitting Message...' : `Send Message to ${PERSONAL_INFO.email}`}</span>
                 </button>
               </form>
             )}

@@ -167,7 +167,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Strict in-context Q&A and automated bullet summarization"
     ],
     tags: ["Python", "Streamlit", "PyPDF", "Gemini 3.6 Flash"],
-    liveUrl: "https://ai-personal-assistant-464q23nsnxufete6hooju5.streamlit.app/",
+    liveUrl: "https://ai-pdf-assistant-5u7wxvr9pxffmxvqfpgfw8.streamlit.app/",
     thumbnail: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80",
     badge: "Port 8503",
     accentColor: "from-emerald-500 to-teal-600",

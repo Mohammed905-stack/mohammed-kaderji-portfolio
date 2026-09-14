@@ -136,7 +136,7 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
     cardBorderAccent: "hover:border-emerald-400/60",
     portStatus: "Local Host :8503 • Active",
     contextType: "docai",
-    liveAppUrl: "https://ai-personal-assistant-464q23nsnxufete6hooju5.streamlit.app/"
+    liveAppUrl: "https://ai-pdf-assistant-5u7wxvr9pxffmxvqfpgfw8.streamlit.app/"
   },
   {
     id: "autonomous-linkedin-content-pipeline",
