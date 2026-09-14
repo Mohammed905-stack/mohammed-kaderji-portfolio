@@ -122,7 +122,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     ],
     tags: ["Python", "Streamlit", "Gemini 3.6 Flash", "Jupyter"],
     liveUrl: "https://ai-personal-assistant-464q23nsnxufete6hooju5.streamlit.app/",
-    thumbnail: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
     badge: "Port 8501",
     accentColor: "from-cyan-500 to-blue-600",
     themeGlow: "rgba(6, 182, 212, 0.2)",

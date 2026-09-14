@@ -36,7 +36,8 @@ export const CustomCursor: React.FC = () => {
 
     // Direct RAF tick for silky smooth hardware-accelerated movement
     const updatePosition = () => {
-      container.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+      // Offset by -4px, -2px so that the SVG apex tip at (4, 2) aligns precisely with (mouseX, mouseY)
+      container.style.transform = `translate3d(${mouseX - 4}px, ${mouseY - 2}px, 0)`;
       animFrameId = requestAnimationFrame(updatePosition);
     };
     animFrameId = requestAnimationFrame(updatePosition);
@@ -114,58 +115,34 @@ export const CustomCursor: React.FC = () => {
     >
       <div
         ref={dartRef}
-        className="cursor-dart relative origin-top-left transition-transform duration-150 ease-out"
+        className="cursor-dart relative transition-transform duration-150 ease-out"
+        style={{
+          transformOrigin: '4px 2px',
+        }}
       >
         {/* Soft cyan ion flare */}
-        <div className="cursor-flare absolute top-0 left-0 w-6 h-6 -translate-x-2 -translate-y-2 rounded-full blur-md opacity-40 bg-cyan-500/25 pointer-events-none transition-all duration-200" />
+        <div className="cursor-flare absolute top-0 left-0 w-6 h-6 -translate-x-1 -translate-y-1 rounded-full blur-md opacity-40 bg-cyan-400/30 pointer-events-none transition-all duration-200" />
 
-        {/* Unique Cyber Dart SVG */}
+        {/* Upright Custom Pointer SVG */}
         <svg
-          width="22"
-          height="22"
+          width="24"
+          height="24"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="filter drop-shadow-[0_2px_8px_rgba(6,182,212,0.55)]"
+          className="filter drop-shadow-[0_2px_8px_rgba(0,229,255,0.6)]"
         >
-          {/* Main Faceted Dart Body */}
           <path
-            d="M2 2L9.5 20.5L13 13L20.5 9.5L2 2Z"
-            fill="url(#dartGradientSmooth)"
-            stroke="#22d3ee"
-            strokeWidth="1.2"
+            d="M4 2L11.5 21L14.5 13.5L22 10.5L4 2Z"
+            fill="#00e5ff"
+            stroke="#00b4d8"
+            strokeWidth="1.5"
             strokeLinejoin="round"
-            strokeLinecap="round"
           />
-
-          {/* Internal Center Crease Ridge */}
-          <path
-            d="M2 2L13 13"
-            stroke="#0891b2"
-            strokeWidth="0.9"
-            strokeLinecap="round"
-            className="cursor-crease transition-colors duration-150"
-          />
-
-          {/* Precision Dot at exact apex tip (0, 0) */}
-          <circle
-            cx="2"
-            cy="2"
-            r="1.2"
-            fill="#ffffff"
-          />
-
-          <defs>
-            <linearGradient id="dartGradientSmooth" x1="2" y1="2" x2="20.5" y2="20.5" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#0B132B" stopOpacity="0.95" />
-              <stop offset="60%" stopColor="#06283D" stopOpacity="0.9" />
-              <stop offset="100%" stopColor="#0891b2" stopOpacity="0.85" />
-            </linearGradient>
-          </defs>
         </svg>
 
         {/* Dynamic target bracket on hover */}
-        <div className="cursor-bracket absolute -top-1 -left-1 w-6 h-6 border-t border-l border-cyan-300/80 rounded-tl-sm pointer-events-none opacity-0 transition-opacity duration-150" />
+        <div className="cursor-bracket absolute top-0 left-0 w-6 h-6 border-t border-l border-cyan-300/80 rounded-tl-sm pointer-events-none opacity-0 transition-opacity duration-150" />
       </div>
     </div>
   );
