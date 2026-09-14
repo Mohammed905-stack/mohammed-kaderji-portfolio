@@ -80,10 +80,14 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden ring-2 ring-cyan-500/40 shrink-0 bg-slate-900">
                     <img
-                      src="https://i.postimg.cc/YCGPnX6d/profile-jpg.jpg"
+                      src={PERSONAL_INFO.headshotUrl}
                       alt={PERSONAL_INFO.name}
                       referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full"
+                      style={{
+                        objectFit: 'cover',
+                        objectPosition: 'center 15%'
+                      }}
                     />
                   </div>
                   <div>
