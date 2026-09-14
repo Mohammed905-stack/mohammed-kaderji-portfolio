@@ -79,8 +79,8 @@ export const PERSONAL_INFO = {
   instagramUrl: "https://www.instagram.com/___mohammedk___?stkn=MTNhemlhNmd0dzhqcg==",
   instagramHandle: "___mohammedk___",
   resumeDownloadName: "Mohammed_Kaderji_Resume.pdf",
-  // Professional portrait photo (executive in suit & glasses with modern office background)
-  headshotUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80",
+  // Profile photo points directly to /profile.jpg in your public folder (or fallback to /profile.png / /profile.jpeg)
+  headshotUrl: "/profile.jpg",
   bio: "A proactive Commerce graduate combining deep foundational coursework in EXIM Logistics and Ocean Freight with hands-on expertise in generative AI agent development, n8n automations, and data analytics. Focused on modernizing supply chains and eliminating manual bottlenecks.",
 };
 

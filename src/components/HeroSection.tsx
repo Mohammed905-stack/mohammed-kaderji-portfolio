@@ -21,12 +21,6 @@ interface HeroSectionProps {
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
-  const [userCustomImage] = useState<string | null>(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('mk_custom_headshot_composite');
-    }
-    return null;
-  });
   const [imageError, setImageError] = useState(false);
 
   const scrollToSection = (id: string) => {
@@ -59,9 +53,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
         
         {/* Status Chip */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.6 }}
           className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/80 border border-cyan-500/30 text-cyan-300 text-xs font-medium backdrop-blur-md mb-8 shadow-sm hover:border-cyan-400/50 transition-colors"
         >
           <span className="relative flex h-2 w-2">
@@ -87,7 +81,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
             {!imageError ? (
               <img
                 id="hero-headshot-img"
-                src={userCustomImage || PERSONAL_INFO.headshotUrl}
+                src="/profile.jpg"
                 alt="Mohammad Kaderji – Professional Headshot"
                 referrerPolicy="no-referrer"
                 onError={() => setImageError(true)}
