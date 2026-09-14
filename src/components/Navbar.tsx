@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, FileText, ArrowRight, Sparkles, Linkedin, Instagram } from 'lucide-react';
+import { Menu, X, ArrowRight, Sparkles, Linkedin, Instagram } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface NavbarProps {
-  onOpenResume: () => void;
+  onOpenResume?: () => void;
 }
 
 const NAV_LINKS = [
@@ -16,7 +16,7 @@ const NAV_LINKS = [
   { name: 'Contact', href: '#contact' },
 ];
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
+export const Navbar: React.FC<NavbarProps> = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -162,14 +162,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             <Instagram className="w-4 h-4" />
           </a>
 
-          <button
-            onClick={onOpenResume}
-            id="nav-resume-btn"
-            className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold text-cyan-300 bg-cyan-950/40 border border-cyan-500/30 hover:bg-cyan-900/40 hover:border-cyan-400/60 hover:text-cyan-200 transition-all duration-200 interactive-element shadow-sm group"
-          >
-            <FileText className="w-3.5 h-3.5 group-hover:scale-110 transition-transform text-cyan-400" />
-            <span>Resume</span>
-          </button>
           <a
             href="#contact"
             id="nav-contact-quick-btn"
@@ -244,17 +236,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                   </a>
                 </div>
 
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onOpenResume();
-                  }}
-                  id="mobile-resume-btn"
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-cyan-300 bg-cyan-950/40 border border-cyan-500/30"
-                >
-                  <FileText className="w-4 h-4 text-cyan-400" />
-                  <span>Download / View Resume</span>
-                </button>
                 <a
                   href="#contact"
                   id="mobile-contact-cta"

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { AboutExperienceSection } from './components/AboutExperienceSection';
 import { ProjectsGallery } from './components/ProjectsGallery';
 import { CertificationsSkillsSection } from './components/CertificationsSkillsSection';
+import { ResumeSection } from './components/ResumeSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
-import { ResumeModal } from './components/ResumeModal';
 
 /**
  * =========================================================================================
@@ -24,17 +24,15 @@ import { ResumeModal } from './components/ResumeModal';
 export { PROJECTS_DATA, CERTIFICATIONS_DATA, PERSONAL_INFO } from './data/portfolioData';
 
 export default function App() {
-  const [isResumeOpen, setIsResumeOpen] = useState(false);
-
   return (
     <div className="relative min-h-screen bg-[#080B11] text-slate-100 selection:bg-cyan-500/30 selection:text-cyan-200">
       {/* Global Navigation Bar */}
-      <Navbar onOpenResume={() => setIsResumeOpen(true)} />
+      <Navbar />
 
       {/* Main Single-Page Content Flow */}
       <main className="relative z-10">
         {/* Section 1: Hero */}
-        <HeroSection onOpenResume={() => setIsResumeOpen(true)} />
+        <HeroSection />
 
         {/* Section 2: About & Experience Timeline */}
         <AboutExperienceSection />
@@ -45,15 +43,15 @@ export default function App() {
         {/* Section 4: Certifications & Technical Skills */}
         <CertificationsSkillsSection />
 
-        {/* Section 5: Contact & Connect Form */}
+        {/* Section 5: Dedicated Interactive CV / Resume */}
+        <ResumeSection />
+
+        {/* Section 6: Contact & Connect Form */}
         <ContactSection />
       </main>
 
-      {/* Section 6: Footer with Social Channels & Phone */}
+      {/* Section 7: Footer with Social Channels & Phone */}
       <Footer />
-
-      {/* Downloadable / Printable Interactive Resume Modal */}
-      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
     </div>
   );
 }

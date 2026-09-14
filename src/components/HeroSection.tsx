@@ -16,7 +16,7 @@ import {
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface HeroSectionProps {
-  onOpenResume: () => void;
+  onOpenResume?: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
@@ -139,7 +139,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           </button>
 
           <button
-            onClick={onOpenResume}
+            onClick={() => scrollToSection('resume')}
             id="hero-download-resume-cta"
             className="w-full sm:w-auto px-7 py-3.5 rounded-xl text-sm sm:text-base font-semibold text-slate-200 bg-slate-900/90 hover:bg-slate-800/90 border border-slate-700/80 hover:border-cyan-500/50 hover:text-white shadow-md transition-all duration-300 flex items-center justify-center gap-2 group interactive-element"
           >

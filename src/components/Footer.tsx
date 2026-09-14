@@ -4,14 +4,15 @@ import {
   Instagram, 
   Phone, 
   Mail, 
-  ArrowUp, 
-  Heart, 
-  Sparkles,
-  ExternalLink
+  ArrowUp
 } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenResume?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -92,7 +93,6 @@ export const Footer: React.FC = () => {
             >
               <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </a>
-
           </div>
         </div>
 
