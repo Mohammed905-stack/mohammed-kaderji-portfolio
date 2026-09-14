@@ -7,7 +7,6 @@ import { CertificationsSkillsSection } from './components/CertificationsSkillsSe
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ResumeModal } from './components/ResumeModal';
-import { CustomCursor } from './components/CustomCursor';
 
 /**
  * =========================================================================================
@@ -29,9 +28,6 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-[#080B11] text-slate-100 selection:bg-cyan-500/30 selection:text-cyan-200">
-      {/* Unique Animated Precision Custom Cursor */}
-      <CustomCursor />
-
       {/* Global Navigation Bar */}
       <Navbar onOpenResume={() => setIsResumeOpen(true)} />
 

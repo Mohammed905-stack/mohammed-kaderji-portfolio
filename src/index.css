@@ -19,43 +19,29 @@
     background-color: #080B11;
     color: #F1F5F9;
     overflow-x: hidden;
+    cursor: default;
+    transform: translateZ(0);
   }
 
-  /* Seamless cursor on mouse devices with zero cursor stutter */
-  @media (pointer: fine) {
-    *, body, a, button, input, textarea, select, [role="button"] {
-      cursor: none !important;
-    }
+  /* Native OS cursor rules for interactive controls */
+  a,
+  button,
+  [role="button"],
+  input[type="submit"],
+  input[type="button"],
+  .interactive-element {
+    cursor: pointer;
+  }
+
+  /* Hardware acceleration on main scrolling container */
+  main {
+    transform: translateZ(0);
+    will-change: scroll-position;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-outfit);
   }
-}
-
-/* Custom Cursor GPU Styles */
-.cursor-dart {
-  transform-origin: 4px 2px;
-}
-
-.cursor-hovered {
-  transform: scale(1.22) !important;
-  transform-origin: 4px 2px !important;
-}
-
-.cursor-hovered .cursor-flare {
-  opacity: 0.8 !important;
-  transform: scale(1.35) !important;
-  background-color: rgba(0, 229, 255, 0.45) !important;
-}
-
-.cursor-hovered .cursor-bracket {
-  opacity: 1 !important;
-}
-
-.cursor-clicked {
-  transform: scale(0.92) !important;
-  transform-origin: 4px 2px !important;
 }
 
 /* Custom scrollbar */
