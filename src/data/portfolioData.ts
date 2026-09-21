@@ -9,19 +9,22 @@
 export interface ProjectItem {
   id: string;
   title: string;
-  category: 'AI Agents' | 'Automation Workflows' | 'Document Intelligence' | 'AI Web Apps';
+  category: 'AI Agents' | 'Automation Workflows' | 'Document Intelligence' | 'AI Web Apps' | 'EXIM LOGISTICS & COMPLIANCE AI' | string;
   tagline: string;
   description: string;
   highlights: string[];
   tags: string[];
+  tech?: string[];
   liveUrl: string;
+  pdfViewerUrl?: string;
+  githubUrl?: string;
   thumbnail: string;
   badge?: string;
   accentColor?: string;
   themeGlow?: string;
   cardBgGradient?: string;
   cardBorderAccent?: string;
-  projectContextType?: 'chatbot' | 'creator' | 'docai' | 'workflow' | 'telegram';
+  projectContextType?: 'chatbot' | 'creator' | 'docai' | 'workflow' | 'telegram' | 'shipping';
   metricLabel?: string;
 }
 
@@ -121,7 +124,9 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Google Gemini 3.6 Flash & Jupyter Notebook integration"
     ],
     tags: ["Python", "Streamlit", "Gemini 3.6 Flash", "Jupyter"],
-    liveUrl: "https://ai-personal-assistant-464q23nsnxufete6hooju5.streamlit.app/",
+    liveUrl: "https://kaderji-personal-assistant.streamlit.app",
+    pdfViewerUrl: "/Project_1_AI_Personal_Assistant_Mohammed_Kaderji_Report.pdf",
+    githubUrl: "https://github.com/Mohammed905-stack/ai-personal-assistant",
     thumbnail: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
     badge: "Port 8501",
     accentColor: "from-cyan-500 to-blue-600",
@@ -144,7 +149,9 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Persona/Tone control: Professional, Funny, Formal, Friendly"
     ],
     tags: ["Python", "Streamlit", "Gemini 3.6 Flash"],
-    liveUrl: "https://ai-content-creator-7qzen2ftgmrssp4jgf2rzj.streamlit.app/",
+    liveUrl: "https://kaderji-content-creator.streamlit.app",
+    pdfViewerUrl: "/Project_2_AI_Content_Creator_Mohammed_Kaderji_Report.pdf",
+    githubUrl: "https://github.com/Mohammed905-stack/ai-content-creator",
     thumbnail: "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=80",
     badge: "Port 8502",
     accentColor: "from-purple-500 to-pink-600",
@@ -167,15 +174,43 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Strict in-context Q&A and automated bullet summarization"
     ],
     tags: ["Python", "Streamlit", "PyPDF", "Gemini 3.6 Flash"],
-    liveUrl: "https://ai-pdf-assistant-5u7wxvr9pxffmxvqfpgfw8.streamlit.app/",
+    liveUrl: "https://kaderji-pdf-assistant.streamlit.app",
+    pdfViewerUrl: "/Project_3_AI_PDF_Assistant_Mohammed_Kaderji_Report.pdf",
+    githubUrl: "https://github.com/Mohammed905-stack/ai-pdf-assistant",
     thumbnail: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80",
     badge: "Port 8503",
     accentColor: "from-emerald-500 to-teal-600",
-    themeGlow: "rgba(16, 185, 129, 0.2)",
+    themeGlow: "rgba(168, 85, 247, 0.2)",
     cardBgGradient: "from-emerald-950/30 via-[#0B0F19] to-slate-950",
     cardBorderAccent: "hover:border-emerald-400/60",
     projectContextType: "docai",
     metricLabel: "Port 8503 • Active",
+  },
+  {
+    id: "global-trade-ocean-bl-auditor",
+    title: "Global Trade & Ocean B/L Document Auditor",
+    category: "EXIM LOGISTICS & COMPLIANCE AI",
+    tagline: "Autonomous shipping compliance engine auditing Ocean Bills of Lading",
+    description:
+      "Autonomous shipping compliance engine auditing Ocean Bills of Lading against UCP 600, checking HS codes, and generating customs clearance verdicts.",
+    highlights: [
+      "Streamlit cloud engine auditing maritime trade documents & UCP 600 rules",
+      "Automated verification of HS codes, port codes, container weights, and consignment details",
+      "Instant customs clearance verdict generation with structured export reports"
+    ],
+    tags: ["Python", "Streamlit", "PyPDF", "Google Gemini 3.6 Flash"],
+    tech: ["Python", "Streamlit", "PyPDF", "Google Gemini 3.6 Flash"],
+    liveUrl: "https://kaderji-cargo-auditor.streamlit.app",
+    pdfViewerUrl: "/ai-shipping-bl-auditor_Mohammed_Kaderji_Report.pdf",
+    githubUrl: "https://github.com/Mohammed905-stack/ai-shipping-bl-auditor",
+    thumbnail: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80",
+    badge: "EXIM Logistics",
+    accentColor: "from-teal-500 to-emerald-600",
+    themeGlow: "rgba(20, 184, 166, 0.2)",
+    cardBgGradient: "from-teal-950/30 via-[#0B0F19] to-slate-950",
+    cardBorderAccent: "hover:border-teal-400/60",
+    projectContextType: "shipping",
+    metricLabel: "Live • Production",
   },
   {
     id: "autonomous-linkedin-content-pipeline",
@@ -190,7 +225,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Continuous polling, automated summarization, and direct OAuth2 publishing"
     ],
     tags: ["n8n Cloud", "LangChain", "OpenAI", "Google Sheets", "LinkedIn API"],
-    liveUrl: "#projects",
+    liveUrl: "/linkedin-automation-case-study.pdf",
     thumbnail: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
     badge: "n8n Cloud",
     accentColor: "from-blue-600 to-indigo-600",
@@ -213,7 +248,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "Structured 4-step ideation questionnaire & conversational memory"
     ],
     tags: ["Telegram Bot API", "n8n Cloud", "LangChain", "Buffer Memory", "Google Sheets"],
-    liveUrl: "#projects",
+    liveUrl: "/telegram-bot-case-study.pdf",
     thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
     badge: "RoboClicks Bot",
     accentColor: "from-sky-400 to-blue-700",
@@ -222,7 +257,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     cardBorderAccent: "hover:border-sky-400/60",
     projectContextType: "telegram",
     metricLabel: "24/7 Live • Bot API",
-  },
+  }
 ];
 
 // -----------------------------------------------------------------------

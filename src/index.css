@@ -20,7 +20,6 @@
     color: #F1F5F9;
     overflow-x: hidden;
     cursor: default;
-    transform: translateZ(0);
   }
 
   /* Native OS cursor rules for interactive controls */
@@ -33,10 +32,8 @@
     cursor: pointer;
   }
 
-  /* Hardware acceleration on main scrolling container */
   main {
-    transform: translateZ(0);
-    will-change: scroll-position;
+    min-height: 100vh;
   }
 
   h1, h2, h3, h4, h5, h6 {
