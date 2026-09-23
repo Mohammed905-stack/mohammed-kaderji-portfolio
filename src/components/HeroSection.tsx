@@ -65,20 +65,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
           <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-blue-500/80 shadow-[0_0_35px_rgba(59,130,246,0.35)] relative mx-auto">
             <img
               id="hero-headshot-img"
-              src="/profile.jpg"
+              src="https://i.postimg.cc/KvG1gK9V/Chat-GPT-Image-Sep-14-2026-08-29-25-PM.png"
               onError={(e) => {
                 const target = e.currentTarget as HTMLImageElement;
-                if (target.src !== 'https://i.postimg.cc/BbPpjJKC/Chat-GPT-Image-Sep-14-2026-08-29-25-PM.png') {
-                  target.src = 'https://i.postimg.cc/BbPpjJKC/Chat-GPT-Image-Sep-14-2026-08-29-25-PM.png';
+                if (target.src !== '/profile.jpg') {
+                  target.src = '/profile.jpg';
                 }
               }}
               alt="Mohammed Kaderji – Professional Headshot"
               referrerPolicy="no-referrer"
+              className="w-full h-full object-cover select-none pointer-events-none"
               style={{
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                objectPosition: 'center 15%'
+                objectPosition: 'center 20%',
+                transform: 'scale(1.15)',
+                transformOrigin: 'center 25%'
               }}
             />
           </div>

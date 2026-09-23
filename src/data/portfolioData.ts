@@ -24,7 +24,7 @@ export interface ProjectItem {
   themeGlow?: string;
   cardBgGradient?: string;
   cardBorderAccent?: string;
-  projectContextType?: 'chatbot' | 'creator' | 'docai' | 'workflow' | 'telegram' | 'shipping';
+  projectContextType?: 'chatbot' | 'creator' | 'docai' | 'workflow' | 'telegram' | 'shipping' | 'compliance';
   metricLabel?: string;
 }
 
@@ -83,7 +83,7 @@ export const PERSONAL_INFO = {
   instagramHandle: "___mohammedk___",
   resumeDownloadName: "Mohammed_Kaderji_Resume.pdf",
   // Direct high-resolution profile photo
-  headshotUrl: "https://i.postimg.cc/BbPpjJKC/Chat-GPT-Image-Sep-14-2026-08-29-25-PM.png",
+  headshotUrl: "https://i.postimg.cc/KvG1gK9V/Chat-GPT-Image-Sep-14-2026-08-29-25-PM.png",
   bio: "A proactive Commerce graduate combining deep foundational coursework in EXIM Logistics and Ocean Freight with hands-on expertise in generative AI agent development, n8n automations, and data analytics. Focused on modernizing supply chains and eliminating manual bottlenecks.",
 };
 
@@ -257,6 +257,32 @@ export const PROJECTS_DATA: ProjectItem[] = [
     cardBorderAccent: "hover:border-sky-400/60",
     projectContextType: "telegram",
     metricLabel: "24/7 Live • Bot API",
+  },
+  {
+    id: "ai-customs-hs-code-auditor",
+    title: "AI-Powered Customs & HS Code Classification Auditor",
+    category: "Automation Workflows",
+    tagline: "Automated local n8n workflow with Gemini AI Agent for customs & HS code classification",
+    description:
+      "An automated local workflow built in n8n utilizing the Google Gemini AI Agent to streamline international trade compliance, classify products into Harmonized System (HS) chapters, and flag regulatory watch-outs.",
+    highlights: [
+      "n8n (Local Instance), n8n AI Agent Node, Google Gemini API (gemini-3.6-flash / Gemini Chat Model)",
+      "Automated evaluation of raw product descriptions using custom system instructions focused on international trade laws",
+      "Multi-tier compliance report covering HS chapters, regulatory watch-outs (UFLPA, quotas, labeling), and required documentation"
+    ],
+    tags: ["n8n (Local Instance)", "n8n AI Agent Node", "Google Gemini API", "Gemini 3.6 Flash", "Trade Compliance"],
+    tech: ["n8n (Local Instance)", "n8n AI Agent Node", "Google Gemini API", "Gemini 3.6 Flash", "Modular Trade Prompting"],
+    liveUrl: "/hs_code_compliance_project_documentation.pdf",
+    pdfViewerUrl: "/hs_code_compliance_project_documentation.pdf",
+    githubUrl: "https://github.com/Mohammed905-stack/AI-Customs-HS-Code-Auditor-",
+    thumbnail: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
+    badge: "n8n Local • Gemini 3.6 Flash",
+    accentColor: "from-amber-500 to-orange-600",
+    themeGlow: "rgba(245, 158, 11, 0.2)",
+    cardBgGradient: "from-amber-950/30 via-[#0B0F19] to-slate-950",
+    cardBorderAccent: "hover:border-amber-400/60",
+    projectContextType: "compliance",
+    metricLabel: "n8n Local • Gemini Agent",
   }
 ];
 
