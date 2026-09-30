@@ -56,6 +56,8 @@ export interface WebDevProject {
   thumbnail: string;
   statusBadge: string;
   previewNote: string;
+  pdfViewerUrl?: string;
+  githubUrl?: string;
 }
 
 export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
@@ -270,6 +272,19 @@ export const WEB_DEV_PROJECTS: WebDevProject[] = [
     thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80",
     statusBadge: "Public Preview",
     previewNote: "Secured client runtime (zero editor/code access)"
+  },
+  {
+    id: "web-incoterms-trade-engine",
+    title: "Incoterms 2020 & Global Trade Cost Engine",
+    description: "Interactive reference for all 11 Incoterms 2020 rules, with landed cost calculations, currency conversions, scenario comparisons, and trade compliance checklists.",
+    liveUrl: "https://mohammed905-stack.github.io/incoterms-trade-engine/",
+    category: "Global Trade Web Application",
+    techTags: ["React", "TypeScript", "Vite", "Tailwind CSS", "GitHub Actions"],
+    thumbnail: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80",
+    statusBadge: "Public Preview",
+    previewNote: "GitHub Pages public deployment",
+    pdfViewerUrl: "/incoterms-2020-global-trade-cost-engine-report.pdf",
+    githubUrl: "https://github.com/Mohammed905-stack/incoterms-trade-engine"
   }
 ];
 
@@ -951,6 +966,30 @@ export const ProjectsGallery: React.FC = () => {
                     <ExternalLink className="w-3.5 h-3.5 text-blue-400 group-hover/link:text-white group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
                   </a>
 
+                  {webApp.pdfViewerUrl && (
+                    <a
+                      href={webApp.pdfViewerUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      id={`view-case-study-${webApp.id}`}
+                      className="w-full py-2 px-3 rounded-xl text-xs font-bold text-slate-200 bg-slate-800/80 hover:bg-blue-600 hover:text-white border border-slate-700 hover:border-blue-500 transition-all duration-200 flex items-center justify-center gap-2 group/link interactive-element"
+                    >
+                      <FileText className="w-3.5 h-3.5 text-blue-400" />
+                      <span>View Case Study PDF ↗</span>
+                    </a>
+                  )}
+                  {webApp.githubUrl && (
+                    <a
+                      href={webApp.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      id={`view-github-${webApp.id}`}
+                      className="w-full py-2 px-3 rounded-xl text-xs font-bold text-slate-200 bg-slate-800/80 hover:bg-blue-600 hover:text-white border border-slate-700 hover:border-blue-500 transition-all duration-200 flex items-center justify-center gap-2 group/link interactive-element"
+                    >
+                      <Github className="w-3.5 h-3.5 text-blue-400" />
+                      <span>View GitHub Repository ↗</span>
+                    </a>
+                  )}
                   <p className="text-[10px] text-slate-500 text-center pt-1 flex items-center justify-center gap-1">
                     <Lock className="w-3 h-3 text-slate-500" />
                     <span>{webApp.previewNote}</span>
