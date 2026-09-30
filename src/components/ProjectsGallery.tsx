@@ -16,7 +16,10 @@ import {
   MessageSquare,
   Ship,
   Github,
-  Layers
+  Layers,
+  Download,
+  Calculator,
+  CheckCircle2
 } from 'lucide-react';
 
 export interface AICapstoneProject {
@@ -51,6 +54,8 @@ export interface WebDevProject {
   title: string;
   description: string;
   liveUrl: string;
+  githubUrl?: string;
+  pdfUrl?: string;
   category: string;
   techTags: string[];
   thumbnail: string;
@@ -228,6 +233,19 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
 
 export const WEB_DEV_PROJECTS: WebDevProject[] = [
   {
+    id: "web-incoterms-trade-engine",
+    title: "Incoterms 2020 & Global Trade Cost Engine",
+    description: "A comprehensive React & Vite web application built to calculate landed costs, navigate international trade risk matrices under official ICC 2020 standards, and audit global supply chain compliance.",
+    liveUrl: "https://mohammed905-stack.github.io/incoterms-trade-engine/",
+    githubUrl: "https://github.com/mohammed905-stack/incoterms-trade-engine",
+    pdfUrl: "/Incoterms_2020_Trade_Engine_Project_Delivery_Summary.pdf",
+    category: "EXIM Trade & Cost Engine",
+    techTags: ["React", "Vite", "TypeScript", "Tailwind CSS", "Incoterms 2020"],
+    thumbnail: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1000&q=80",
+    statusBadge: "Official ICC 2020",
+    previewNote: "Production Web App • Live GitHub Pages"
+  },
+  {
     id: "web-routine-tracker",
     title: "Daily Progress & Routine Tracker App",
     description: "Interactive, responsive task and personal growth tracking application built with dynamic state handling.",
@@ -237,28 +255,6 @@ export const WEB_DEV_PROJECTS: WebDevProject[] = [
     thumbnail: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=1000&q=80",
     statusBadge: "Public Preview",
     previewNote: "Secured client runtime (zero editor/code access)"
-  },
-  {
-    id: "web-aistudio-dynamic",
-    title: "AI Studio Dynamic Web Application",
-    description: "Responsive web application prototype engineered with modern front-end layout paradigms and reactive components.",
-    liveUrl: "https://ai-dynamic-app.web.app",
-    category: "AI Application Prototype",
-    techTags: ["AI Studio", "TypeScript", "Reactive UI", "Cloud Host"],
-    thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80",
-    statusBadge: "Verified Preview",
-    previewNote: "Sandboxed public demo (no editor/prompts)"
-  },
-  {
-    id: "web-aistudio-utility",
-    title: "AI Utility & Assistant Web Platform",
-    description: "AI-enabled productivity interface featuring custom agent interactions within a minimalist, high-performance UI.",
-    liveUrl: "https://ai-utility-platform.web.app",
-    category: "Productivity Platform",
-    techTags: ["AI Agent UI", "Gemini API", "Modern Layout", "Fast Response"],
-    thumbnail: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80",
-    statusBadge: "Verified Preview",
-    previewNote: "Sandboxed public demo (no editor/prompts)"
   },
   {
     id: "web-lovable-prototype",
@@ -274,6 +270,11 @@ export const WEB_DEV_PROJECTS: WebDevProject[] = [
 ];
 
 // --- Tech Stack Icon Badges Components ---
+const ViteIcon: React.FC<{ className?: string }> = ({ className = "w-3 h-3 text-[#bd34fe] shrink-0" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M21.5 4.5l-9.8 17.5a1 1 0 01-1.74 0L2.5 8.7a1 1 0 01.88-1.5h4.12l2.6 6 3.4-10.7a1 1 0 01.95-.7h6.05a1 1 0 011 1.7z" />
+  </svg>
+);
 const N8nIcon: React.FC<{ className?: string }> = ({ className = "w-3 h-3 text-[#ff6d5a] shrink-0" }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
     <circle cx="5" cy="12" r="3" />
@@ -458,6 +459,22 @@ export const getTechStackBadge = (tech: string) => {
   if (lower.includes('tailwind')) {
     return {
       icon: <TailwindIcon />,
+      border: 'border-cyan-500/30 hover:border-cyan-500/60',
+      text: 'text-cyan-200',
+      bg: 'bg-cyan-950/20'
+    };
+  }
+  if (lower.includes('vite')) {
+    return {
+      icon: <ViteIcon />,
+      border: 'border-purple-500/30 hover:border-purple-500/60',
+      text: 'text-purple-200',
+      bg: 'bg-purple-950/20'
+    };
+  }
+  if (lower.includes('incoterm') || lower.includes('trade')) {
+    return {
+      icon: <Globe className="w-3 h-3 shrink-0 text-cyan-400" />,
       border: 'border-cyan-500/30 hover:border-cyan-500/60',
       text: 'text-cyan-200',
       bg: 'bg-cyan-950/20'
@@ -861,7 +878,7 @@ export const ProjectsGallery: React.FC = () => {
       </div>
 
       {/* =========================================================================
-          PART 2: Web Development & Interactive Applications (Division 6 - 4 Cards)
+          PART 2: Web Development & Interactive Applications (Division 6)
           ========================================================================= */}
       <div className="pt-8 border-t border-slate-800/80 relative z-10">
         <div className="flex flex-col items-center text-center mb-12">
@@ -873,7 +890,7 @@ export const ProjectsGallery: React.FC = () => {
             Web Development & Interactive Applications
           </h2>
           <p className="mt-3 text-slate-300 max-w-2xl text-sm sm:text-base leading-relaxed">
-            Responsive client-side prototypes, dynamic growth trackers, and sandboxed AI application interfaces. Each links strictly to a clean, public runtime deployment.
+            Responsive client-side prototypes, dynamic growth trackers, and international trade compliance engines. Each links strictly to a clean, public runtime deployment.
           </p>
           <div className="inline-flex items-center gap-1.5 mt-3 text-xs text-slate-400 bg-slate-900/60 px-3 py-1 rounded-lg border border-slate-800">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
@@ -882,7 +899,7 @@ export const ProjectsGallery: React.FC = () => {
         </div>
 
         {/* Web Dev Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6">
           {WEB_DEV_PROJECTS.map((webApp, wIdx) => (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -893,7 +910,7 @@ export const ProjectsGallery: React.FC = () => {
               className="group flex flex-col rounded-2xl bg-gradient-to-b from-slate-900/90 via-[#0B0F19] to-slate-950 border border-slate-800/80 hover:border-blue-400/50 transition-all duration-300 overflow-hidden hover:shadow-xl hover:shadow-blue-500/10"
             >
               {/* Thumbnail Header */}
-              <div className="relative h-40 w-full overflow-hidden bg-slate-950">
+              <div className="relative h-44 w-full overflow-hidden bg-slate-950">
                 <img
                   src={webApp.thumbnail}
                   alt={webApp.title}
@@ -940,21 +957,64 @@ export const ProjectsGallery: React.FC = () => {
 
                 {/* Secured Public Link & Privacy Note */}
                 <div className="pt-3 border-t border-slate-800/80 space-y-2">
-                  <a
-                    href={webApp.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    id={`web-demo-${webApp.id}`}
-                    className="w-full py-2 px-3 rounded-xl text-xs font-bold text-slate-200 bg-slate-800/80 hover:bg-blue-600 hover:text-white border border-slate-700 hover:border-blue-500 transition-all duration-200 flex items-center justify-center gap-2 group/link interactive-element"
-                  >
-                    <span>Launch Public App</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-blue-400 group-hover/link:text-white group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
-                  </a>
+                  {webApp.githubUrl || webApp.pdfUrl ? (
+                    <div className="flex flex-col gap-2">
+                      <a
+                        href={webApp.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        id={`web-demo-${webApp.id}`}
+                        className="w-full py-2 px-3 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 border border-blue-400/40 shadow-md shadow-blue-500/20 transition-all duration-200 flex items-center justify-center gap-1.5 group/link interactive-element"
+                      >
+                        <Play className="w-3.5 h-3.5 fill-white text-white" />
+                        <span>Launch Live App ↗</span>
+                      </a>
 
-                  <p className="text-[10px] text-slate-500 text-center pt-1 flex items-center justify-center gap-1">
-                    <Lock className="w-3 h-3 text-slate-500" />
-                    <span>{webApp.previewNote}</span>
-                  </p>
+                      {webApp.githubUrl && (
+                        <a
+                          href={webApp.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          id={`web-github-${webApp.id}`}
+                          className="w-full py-2 px-3 rounded-xl text-xs font-semibold text-cyan-300 bg-slate-900/60 hover:bg-cyan-500/10 border border-cyan-500/40 hover:border-cyan-400 transition-all duration-200 flex items-center justify-center gap-1.5 group/git interactive-element"
+                        >
+                          <Github className="w-3.5 h-3.5 text-cyan-300" />
+                          <span>View GitHub Repository ↗</span>
+                        </a>
+                      )}
+
+                      {webApp.pdfUrl && (
+                        <a
+                          href={webApp.pdfUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          id={`web-pdf-${webApp.id}`}
+                          className="w-full py-2 px-3 rounded-xl text-xs font-semibold text-slate-200 bg-slate-900/90 hover:bg-slate-800 hover:text-white border border-slate-700/80 hover:border-blue-400/60 transition-all duration-200 flex items-center justify-center gap-1.5 group/pdf interactive-element"
+                        >
+                          <FileText className="w-3.5 h-3.5 text-cyan-400" />
+                          <span>View/Download Documentation PDF ↗</span>
+                        </a>
+                      )}
+                    </div>
+                  ) : (
+                    <>
+                      <a
+                        href={webApp.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        id={`web-demo-${webApp.id}`}
+                        className="w-full py-2 px-3 rounded-xl text-xs font-bold text-slate-200 bg-slate-800/80 hover:bg-blue-600 hover:text-white border border-slate-700 hover:border-blue-500 transition-all duration-200 flex items-center justify-center gap-2 group/link interactive-element"
+                      >
+                        <span>Launch Public App</span>
+                        <ExternalLink className="w-3.5 h-3.5 text-blue-400 group-hover/link:text-white group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                      </a>
+
+                      <p className="text-[10px] text-slate-500 text-center pt-1 flex items-center justify-center gap-1">
+                        <Lock className="w-3 h-3 text-slate-500" />
+                        <span>{webApp.previewNote}</span>
+                      </p>
+                    </>
+                  )}
                 </div>
               </div>
             </motion.div>

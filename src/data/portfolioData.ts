@@ -283,6 +283,32 @@ export const PROJECTS_DATA: ProjectItem[] = [
     cardBorderAccent: "hover:border-amber-400/60",
     projectContextType: "compliance",
     metricLabel: "n8n Local • Gemini Agent",
+  },
+  {
+    id: "incoterms-2020-trade-engine",
+    title: "Incoterms 2020 & Global Trade Cost Engine",
+    category: "EXIM LOGISTICS & COMPLIANCE AI",
+    tagline: "React & Vite Landed Cost Engine navigating ICC 2020 Risk Transfer Matrices",
+    description:
+      "A comprehensive React & Vite web application built to calculate landed costs, navigate international trade risk matrices under official ICC 2020 standards, and audit global supply chain compliance.",
+    highlights: [
+      "11 ICC Incoterms 2020 Rules Support across multimodal and maritime shipping routes",
+      "Dynamic Landed Cost calculation auditing Ex-Works, Port Delivery, Freight, CIF/CIP Values, and Customs Tariffs",
+      "Interactive Responsibility Matrix color-coding 10 key supply chain risk and obligation handoffs"
+    ],
+    tags: ["React", "Vite", "TypeScript", "Tailwind CSS", "Incoterms 2020"],
+    tech: ["React", "Vite", "TypeScript", "Tailwind CSS", "Incoterms 2020"],
+    liveUrl: "https://mohammed905-stack.github.io/incoterms-trade-engine/",
+    pdfViewerUrl: "/Incoterms_2020_Trade_Engine_Project_Delivery_Summary.pdf",
+    githubUrl: "https://github.com/mohammed905-stack/incoterms-trade-engine",
+    thumbnail: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1200&q=80",
+    badge: "Official ICC 2020",
+    accentColor: "from-cyan-500 to-blue-600",
+    themeGlow: "rgba(6, 182, 212, 0.2)",
+    cardBgGradient: "from-cyan-950/30 via-[#0B0F19] to-slate-950",
+    cardBorderAccent: "hover:border-cyan-400/60",
+    projectContextType: "shipping",
+    metricLabel: "Live • Production",
   }
 ];
 
