@@ -24,8 +24,14 @@ export interface ProjectItem {
   themeGlow?: string;
   cardBgGradient?: string;
   cardBorderAccent?: string;
-  projectContextType?: 'chatbot' | 'creator' | 'docai' | 'workflow' | 'telegram' | 'shipping' | 'compliance';
+  projectContextType?: 'chatbot' | 'creator' | 'docai' | 'workflow' | 'telegram' | 'shipping' | 'compliance' | 'rag' | 'voice';
   metricLabel?: string;
+  detailedDescription?: string;
+  features?: string[];
+  devNote?: string;
+  status?: string;
+  assessmentContext?: string;
+  isAssessment?: boolean;
 }
 
 export interface CertificationItem {
@@ -112,79 +118,166 @@ export const PERSONAL_INFO = {
 // },
 export const PROJECTS_DATA: ProjectItem[] = [
   {
-    id: "ai-personal-assistant-chatbot",
-    title: "AI Personal Assistant Chatbot",
-    category: "AI Agents",
-    tagline: "Python, Streamlit & Gemini 3.6 Flash on Port 8501",
+    id: "express-docs-rag-assistant",
+    title: "Express Docs — AI Technical Documentation Assistant",
+    category: "Agentic AI / RAG",
+    tagline: "LangGraph & FastAPI RAG Assistant indexing technical docs with citation validation",
     description:
-      "Responsive conversational assistant engineered to process arbitrary user inquiries and stream structured generative responses with 404 deprecation prevention.",
+      "An AI assistant that searches technical documentation and produces answers with supporting sources. Built with AI-assisted development for the Express Analytics Data Science Intern assessment.",
+    detailedDescription:
+      "The application indexes five official FastAPI guides. For each question, it retrieves relevant passages, checks their usefulness, and uses Gemini to generate a cited answer. LangGraph coordinates the workflow, including a bounded search retry and fallback when supporting information is insufficient.",
     highlights: [
-      "Streamlit local host server on port 8501",
+      "Gemini embeddings & FAISS similarity search across indexed FastAPI guides",
+      "LangGraph conditional routing, passage relevance grading & query rewriting",
+      "Citation validation, SQLite storage, and 78 recorded passing unit tests"
+    ],
+    features: [
+      "Document ingestion and chunking with overlap.",
+      "Gemini embeddings and FAISS similarity search.",
+      "Individual passage relevance grading.",
+      "Conditional routing and bounded query rewriting.",
+      "Citation validation and an answer-support check.",
+      "SQLite storage for documents, queries and feedback.",
+      "Browser interface with source excerpts, workflow trace and JSON export.",
+      "70 Python tests and 8 frontend tests recorded as passing."
+    ],
+    tags: ["Python", "FastAPI", "LangGraph", "Gemini API", "FAISS", "SQLite", "Pydantic", "HTML", "CSS", "JavaScript"],
+    tech: ["Python", "FastAPI", "LangGraph", "Gemini API", "FAISS", "SQLite", "Pydantic", "HTML", "CSS", "JavaScript"],
+    liveUrl: "https://github.com/Mohammed905-stack/express-analytics-rag-assistant",
+    githubUrl: "https://github.com/Mohammed905-stack/express-analytics-rag-assistant",
+    thumbnail: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+    badge: "Assessment • LangGraph RAG",
+    accentColor: "from-emerald-500 to-teal-600",
+    themeGlow: "rgba(16, 185, 129, 0.2)",
+    cardBgGradient: "from-emerald-950/30 via-[#0B0F19] to-slate-950",
+    cardBorderAccent: "hover:border-emerald-400/60",
+    projectContextType: "rag",
+    metricLabel: "Runs Locally • 78 Tests Passing",
+    devNote: "Developed with heavy AI assistance, followed by local testing and debugging.",
+    status: "Completed assessment project; runs locally.",
+    assessmentContext: "Express Analytics Data Science Intern assessment",
+    isAssessment: true,
+  },
+  {
+    id: "aria-ai-voice-customer-support",
+    title: "Aria — AI Voice Customer Support Assistant",
+    category: "Voice AI / Customer Support",
+    tagline: "Browser voice assistant handling sample order queries and skincare policies",
+    description:
+      "A browser-based voice assistant for the fictional Aura Skincare brand, handling sample order enquiries and policy questions with spoken responses.",
+    detailedDescription:
+      "Built with AI-assisted development for the Datastraw AI + Tech Intern assessment. Aria combines browser speech recognition, a Node.js/Express backend, mock order lookup and explicit policy rules. Gemini supports general brand conversations. The interface provides spoken replies, a conversation transcript and a structured post-call outcome.",
+    highlights: [
+      "Microphone conversation with browser Web Speech API & status indicators",
+      "Sample order lookup (ORD-101 to 103) & call context for follow-up questions",
+      "Shipping, returns, cancellation-eligibility, COD policy handling & JSON summary"
+    ],
+    features: [
+      "Microphone conversation with browser speech-to-text and text-to-speech.",
+      "Listening, Thinking and Speaking indicators.",
+      "Text interface for testing.",
+      "Sample order lookup using ORD-101, ORD-102 and ORD-103.",
+      "Call-level order context for follow-up questions.",
+      "Shipping, returns, cancellation-eligibility and COD policy handling.",
+      "Missing/invalid order ID handling and responses to common out-of-scope requests.",
+      "Conversation transcript.",
+      "Rule-based JSON outcome containing customer intent, order ID, resolution status and call summary.",
+      "Gemini API key kept on the backend."
+    ],
+    tags: ["JavaScript", "Node.js", "Express.js", "Gemini API", "Web Speech API", "HTML", "CSS", "REST APIs"],
+    tech: ["JavaScript", "Node.js", "Express.js", "Gemini API", "Web Speech API", "HTML", "CSS", "REST APIs"],
+    liveUrl: "https://github.com/Mohammed905-stack/aura-skincare-ai-voice-agent",
+    githubUrl: "https://github.com/Mohammed905-stack/aura-skincare-ai-voice-agent",
+    thumbnail: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1200&q=80",
+    badge: "Assessment • Web Speech API",
+    accentColor: "from-amber-500 to-violet-600",
+    themeGlow: "rgba(245, 158, 11, 0.2)",
+    cardBgGradient: "from-amber-950/30 via-[#0B0F19] to-slate-950",
+    cardBorderAccent: "hover:border-amber-400/60",
+    projectContextType: "voice",
+    metricLabel: "Assessment Prototype • Local",
+    devNote: "Developed with heavy AI assistance and tested through sample customer-support conversations.",
+    status: "Assessment prototype using fictional customer and order data.",
+    assessmentContext: "Datastraw AI + Tech Intern assessment",
+    isAssessment: true,
+  },
+  {
+    id: "ai-personal-assistant-chatbot",
+    title: "AI Personal Assistant",
+    category: "AI Agents",
+    tagline: "Python & Streamlit productivity and workflow automation assistant",
+    description:
+      "A productivity and workflow automation assistant built as an interactive web interface.",
+    highlights: [
+      "Streamlit cloud engine hosted at ai-personal-assistant-464q23nsnxufete6hooju5.streamlit.app",
       "Real-time query execution generating structured biographical breakdowns with active success alert banners",
       "Google Gemini 3.6 Flash & Jupyter Notebook integration"
     ],
-    tags: ["Python", "Streamlit", "Gemini 3.6 Flash", "Jupyter"],
-    liveUrl: "https://kaderji-personal-assistant.streamlit.app",
+    tags: ["Python", "Streamlit", "Automation", "Assistant"],
+    tech: ["Python", "Streamlit", "Automation", "Assistant"],
+    liveUrl: "https://ai-personal-assistant-464q23nsnxufete6hooju5.streamlit.app/",
     pdfViewerUrl: "/Project_1_AI_Personal_Assistant_Mohammed_Kaderji_Report.pdf",
     githubUrl: "https://github.com/Mohammed905-stack/ai-personal-assistant",
     thumbnail: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
-    badge: "Port 8501",
+    badge: "Streamlit Cloud",
     accentColor: "from-cyan-500 to-blue-600",
     themeGlow: "rgba(6, 182, 212, 0.2)",
     cardBgGradient: "from-cyan-950/30 via-[#0B0F19] to-slate-950",
     cardBorderAccent: "hover:border-cyan-400/60",
     projectContextType: "chatbot",
-    metricLabel: "Port 8501 • Active",
+    metricLabel: "Live • Production",
   },
   {
     id: "ai-content-creator-application",
-    title: "AI Content Creator Application",
+    title: "AI Content Creator",
     category: "AI Web Apps",
-    tagline: "Multi-platform copy generator dynamically engineering tailored outputs",
+    tagline: "Python & Streamlit AI-powered content generation and optimization utility",
     description:
-      "Multi-platform copy generator dynamically engineering tailored outputs for LinkedIn, Instagram, Twitter, Emails, and Blog Outlines with interactive persona/tone control (Professional, Funny, Formal, Friendly).",
+      "An AI-powered content generation and optimization utility built with Python and Streamlit.",
     highlights: [
-      "Streamlit local host server on port 8502",
+      "Streamlit cloud engine hosted at ai-content-creator-7qzen2ftgmrssp4jgf2rzj.streamlit.app",
       "Automated drafting of executive-level thought leadership copy with strategic calls-to-action and hashtag taxonomies",
       "Persona/Tone control: Professional, Funny, Formal, Friendly"
     ],
-    tags: ["Python", "Streamlit", "Gemini 3.6 Flash"],
-    liveUrl: "https://kaderji-content-creator.streamlit.app",
+    tags: ["Python", "Streamlit", "Gemini API", "AI Content Generation"],
+    tech: ["Python", "Streamlit", "Gemini API", "AI Content Generation"],
+    liveUrl: "https://ai-content-creator-7qzen2ftgmrssp4jgf2rzj.streamlit.app/",
     pdfViewerUrl: "/Project_2_AI_Content_Creator_Mohammed_Kaderji_Report.pdf",
     githubUrl: "https://github.com/Mohammed905-stack/ai-content-creator",
     thumbnail: "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=80",
-    badge: "Port 8502",
+    badge: "Streamlit Cloud",
     accentColor: "from-purple-500 to-pink-600",
     themeGlow: "rgba(168, 85, 247, 0.2)",
     cardBgGradient: "from-purple-950/30 via-[#0B0F19] to-slate-950",
     cardBorderAccent: "hover:border-purple-400/60",
     projectContextType: "creator",
-    metricLabel: "Port 8502 • Active",
+    metricLabel: "Live • Production",
   },
   {
     id: "ai-pdf-assistant-document-intelligence",
-    title: "AI PDF Assistant & Document Intelligence",
+    title: "AI PDF Assistant",
     category: "Document Intelligence",
-    tagline: "Context-grounded document reader extracting text across multi-page PDFs",
+    tagline: "Python & Streamlit intelligent document querying and RAG assistant",
     description:
-      "Context-grounded document reader extracting text across multi-page PDFs, providing strict in-context question answering, automated bullet summarization, and multilingual translation.",
+      "An intelligent document querying and RAG assistant for analyzing PDFs and answering questions with context.",
     highlights: [
-      "Streamlit local host server on port 8503",
+      "Streamlit cloud engine hosted at ai-pdf-assistant-5u7wxvr9pxffmxvqfpgfw8.streamlit.app",
       "Ingested multi-page documents (ai_tools.pdf) with one-click translation and synthesis into fluent Hindi (मुख्य सारांश & मुख्य सामग्री)",
       "Strict in-context Q&A and automated bullet summarization"
     ],
-    tags: ["Python", "Streamlit", "PyPDF", "Gemini 3.6 Flash"],
-    liveUrl: "https://kaderji-pdf-assistant.streamlit.app",
+    tags: ["Python", "Streamlit", "RAG", "Document AI"],
+    tech: ["Python", "Streamlit", "RAG", "Document AI"],
+    liveUrl: "https://ai-pdf-assistant-5u7wxvr9pxffmxvqfpgfw8.streamlit.app/",
     pdfViewerUrl: "/Project_3_AI_PDF_Assistant_Mohammed_Kaderji_Report.pdf",
     githubUrl: "https://github.com/Mohammed905-stack/ai-pdf-assistant",
     thumbnail: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80",
-    badge: "Port 8503",
+    badge: "Streamlit Cloud",
     accentColor: "from-emerald-500 to-teal-600",
     themeGlow: "rgba(168, 85, 247, 0.2)",
     cardBgGradient: "from-emerald-950/30 via-[#0B0F19] to-slate-950",
     cardBorderAccent: "hover:border-emerald-400/60",
     projectContextType: "docai",
-    metricLabel: "Port 8503 • Active",
+    metricLabel: "Live • Production",
   },
   {
     id: "global-trade-ocean-bl-auditor",
@@ -192,15 +285,15 @@ export const PROJECTS_DATA: ProjectItem[] = [
     category: "EXIM LOGISTICS & COMPLIANCE AI",
     tagline: "Autonomous shipping compliance engine auditing Ocean Bills of Lading",
     description:
-      "Autonomous shipping compliance engine auditing Ocean Bills of Lading against UCP 600, checking HS codes, and generating customs clearance verdicts.",
+      "Autonomous Shipping Compliance Engine for freight forwarders and logistics teams to audit Ocean Bills of Lading, commercial invoices, and packing lists for discrepancies.",
     highlights: [
       "Streamlit cloud engine auditing maritime trade documents & UCP 600 rules",
       "Automated verification of HS codes, port codes, container weights, and consignment details",
       "Instant customs clearance verdict generation with structured export reports"
     ],
-    tags: ["Python", "Streamlit", "PyPDF", "Google Gemini 3.6 Flash"],
-    tech: ["Python", "Streamlit", "PyPDF", "Google Gemini 3.6 Flash"],
-    liveUrl: "https://kaderji-cargo-auditor.streamlit.app",
+    tags: ["Python", "Streamlit", "Supply Chain", "Logistics Compliance"],
+    tech: ["Python", "Streamlit", "Supply Chain", "Logistics Compliance"],
+    liveUrl: "https://kaderji-cargo-auditor.streamlit.app/",
     pdfViewerUrl: "/ai-shipping-bl-auditor_Mohammed_Kaderji_Report.pdf",
     githubUrl: "https://github.com/Mohammed905-stack/ai-shipping-bl-auditor",
     thumbnail: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80",
@@ -309,6 +402,29 @@ export const PROJECTS_DATA: ProjectItem[] = [
     cardBorderAccent: "hover:border-cyan-400/60",
     projectContextType: "shipping",
     metricLabel: "Live • Production",
+  },
+  {
+    id: "web-routine-tracker",
+    title: "Daily Progress & Routine Tracker App",
+    category: "Full-Stack Web App",
+    tagline: "Interactive, responsive task and personal growth tracking application",
+    description: "Interactive, responsive task and personal growth tracking application built with dynamic state handling.",
+    highlights: [
+      "Responsive task and personal growth tracking",
+      "Interactive state handling and real-time updates",
+      "Secured client runtime deployment"
+    ],
+    tags: ["React", "TypeScript", "Tailwind CSS", "Local State"],
+    tech: ["React", "TypeScript", "Tailwind CSS", "Local State"],
+    liveUrl: "https://smart-diet-glow.lovable.app",
+    thumbnail: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=1000&q=80",
+    badge: "Public Preview",
+    accentColor: "from-blue-500 to-cyan-600",
+    themeGlow: "rgba(59, 130, 246, 0.2)",
+    cardBgGradient: "from-blue-950/30 via-[#0B0F19] to-slate-950",
+    cardBorderAccent: "hover:border-blue-400/60",
+    projectContextType: "workflow",
+    metricLabel: "Public Preview",
   }
 ];
 

@@ -19,7 +19,11 @@ import {
   Layers,
   Download,
   Calculator,
-  CheckCircle2
+  CheckCircle2,
+  Mic,
+  X,
+  Info,
+  BookOpen
 } from 'lucide-react';
 
 export interface AICapstoneProject {
@@ -30,14 +34,16 @@ export interface AICapstoneProject {
   tech?: string[];
   overview: string;
   description?: string;
+  detailedDescription?: string;
   executionDetails: string;
+  executionIndicator?: string;
   thumbnail: string;
   badge: string;
   accentColor: string;
   themeGlow: string;
   cardBgGradient: string;
   cardBorderAccent: string;
-  contextType: 'chatbot' | 'creator' | 'docai' | 'workflow' | 'telegram' | 'shipping' | 'compliance';
+  contextType: 'chatbot' | 'creator' | 'docai' | 'workflow' | 'telegram' | 'shipping' | 'compliance' | 'rag' | 'voice';
   primaryButtonText: string;
   primaryButtonUrl: string;
   secondaryButtonText?: string;
@@ -47,6 +53,11 @@ export interface AICapstoneProject {
   liveUrl?: string;
   pdfViewerUrl?: string;
   githubUrl?: string;
+  features?: string[];
+  devNote?: string;
+  status?: string;
+  assessmentContext?: string;
+  isAssessment?: boolean;
 }
 
 export interface WebDevProject {
@@ -65,20 +76,94 @@ export interface WebDevProject {
 
 export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
   {
+    id: "express-docs-rag-assistant",
+    title: "Express Docs — AI Technical Documentation Assistant",
+    category: "Agentic AI / RAG",
+    badge: "Assessment • LangGraph RAG",
+    executionIndicator: "Runs Locally • 78 Tests Passing",
+    executionDetails: "FastAPI + LangGraph workflow running locally with FAISS vector store",
+    stack: ["Python", "FastAPI", "LangGraph", "Gemini API", "FAISS", "SQLite", "Pydantic", "HTML", "CSS", "JavaScript"],
+    tech: ["Python", "FastAPI", "LangGraph", "Gemini API", "FAISS", "SQLite", "Pydantic", "HTML", "CSS", "JavaScript"],
+    overview: "An AI assistant that searches technical documentation and produces answers with supporting sources. Built with AI-assisted development for the Express Analytics Data Science Intern assessment.",
+    description: "The application indexes five official FastAPI guides. For each question, it retrieves relevant passages, checks their usefulness, and uses Gemini to generate a cited answer. LangGraph coordinates the workflow, including a bounded search retry and fallback when supporting information is insufficient.",
+    detailedDescription: "The application indexes five official FastAPI guides. For each question, it retrieves relevant passages, checks their usefulness, and uses Gemini to generate a cited answer. LangGraph coordinates the workflow, including a bounded search retry and fallback when supporting information is insufficient.",
+    features: [
+      "Document ingestion and chunking with overlap.",
+      "Gemini embeddings and FAISS similarity search.",
+      "Individual passage relevance grading.",
+      "Conditional routing and bounded query rewriting.",
+      "Citation validation and an answer-support check.",
+      "SQLite storage for documents, queries and feedback.",
+      "Browser interface with source excerpts, workflow trace and JSON export.",
+      "70 Python tests and 8 frontend tests recorded as passing."
+    ],
+    devNote: "Developed with heavy AI assistance, followed by local testing and debugging.",
+    status: "Completed assessment project; runs locally.",
+    assessmentContext: "Express Analytics Data Science Intern assessment",
+    githubUrl: "https://github.com/Mohammed905-stack/express-analytics-rag-assistant",
+    primaryButtonText: "View Source & Setup ↗",
+    primaryButtonUrl: "https://github.com/Mohammed905-stack/express-analytics-rag-assistant",
+    thumbnail: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+    accentColor: "from-emerald-500 to-teal-600",
+    themeGlow: "rgba(16, 185, 129, 0.2)",
+    cardBgGradient: "from-emerald-950/30 via-[#0B0F19] to-slate-950",
+    cardBorderAccent: "hover:border-emerald-400/60",
+    contextType: "rag",
+    isAssessment: true
+  },
+  {
+    id: "aria-ai-voice-customer-support",
+    title: "Aria — AI Voice Customer Support Assistant",
+    category: "Voice AI / Customer Support",
+    badge: "Assessment • Web Speech API",
+    executionIndicator: "Assessment Prototype • Local",
+    executionDetails: "Node.js/Express backend with Web Speech API and mock order lookup",
+    stack: ["JavaScript", "Node.js", "Express.js", "Gemini API", "Web Speech API", "HTML", "CSS", "REST APIs"],
+    tech: ["JavaScript", "Node.js", "Express.js", "Gemini API", "Web Speech API", "HTML", "CSS", "REST APIs"],
+    overview: "A browser-based voice assistant for the fictional Aura Skincare brand, handling sample order enquiries and policy questions with spoken responses.",
+    description: "Built with AI-assisted development for the Datastraw AI + Tech Intern assessment. Aria combines browser speech recognition, a Node.js/Express backend, mock order lookup and explicit policy rules. Gemini supports general brand conversations. The interface provides spoken replies, a conversation transcript and a structured post-call outcome.",
+    detailedDescription: "Built with AI-assisted development for the Datastraw AI + Tech Intern assessment. Aria combines browser speech recognition, a Node.js/Express backend, mock order lookup and explicit policy rules. Gemini supports general brand conversations. The interface provides spoken replies, a conversation transcript and a structured post-call outcome.",
+    features: [
+      "Microphone conversation with browser speech-to-text and text-to-speech.",
+      "Listening, Thinking and Speaking indicators.",
+      "Text interface for testing.",
+      "Sample order lookup using ORD-101, ORD-102 and ORD-103.",
+      "Call-level order context for follow-up questions.",
+      "Shipping, returns, cancellation-eligibility and COD policy handling.",
+      "Missing/invalid order ID handling and responses to common out-of-scope requests.",
+      "Conversation transcript.",
+      "Rule-based JSON outcome containing customer intent, order ID, resolution status and call summary.",
+      "Gemini API key kept on the backend."
+    ],
+    devNote: "Developed with heavy AI assistance and tested through sample customer-support conversations.",
+    status: "Assessment prototype using fictional customer and order data.",
+    assessmentContext: "Datastraw AI + Tech Intern assessment",
+    githubUrl: "https://github.com/Mohammed905-stack/aura-skincare-ai-voice-agent",
+    primaryButtonText: "View Source ↗",
+    primaryButtonUrl: "https://github.com/Mohammed905-stack/aura-skincare-ai-voice-agent",
+    thumbnail: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1200&q=80",
+    accentColor: "from-amber-500 to-violet-600",
+    themeGlow: "rgba(245, 158, 11, 0.2)",
+    cardBgGradient: "from-amber-950/30 via-[#0B0F19] to-slate-950",
+    cardBorderAccent: "hover:border-amber-400/60",
+    contextType: "voice",
+    isAssessment: true
+  },
+  {
     id: "ai-personal-assistant-chatbot",
-    title: "AI Personal Assistant Chatbot",
-    category: "GENERATIVE AI / NLP",
-    badge: "Port 8501 • Gemini 3.6",
-    stack: ["Python", "Streamlit", "Google Gemini 3.6 Flash", "Jupyter Notebook"],
-    tech: ["Python", "Streamlit", "Google Gemini 3.6 Flash", "Jupyter Notebook"],
-    overview: "Responsive conversational assistant engineered to process arbitrary user inquiries and stream structured generative responses with 404 deprecation prevention.",
-    description: "Responsive conversational assistant engineered to process arbitrary user inquiries and stream structured generative responses with 404 deprecation prevention.",
-    executionDetails: "Streamlit local host server on port 8501",
-    liveUrl: "https://kaderji-personal-assistant.streamlit.app",
+    title: "AI Personal Assistant",
+    category: "GENERATIVE AI / WORKFLOW AUTOMATION",
+    badge: "Streamlit Cloud • Production",
+    stack: ["Python", "Streamlit", "Automation", "Assistant"],
+    tech: ["Python", "Streamlit", "Automation", "Assistant"],
+    overview: "A productivity and workflow automation assistant built as an interactive web interface.",
+    description: "A productivity and workflow automation assistant built as an interactive web interface.",
+    executionDetails: "Streamlit cloud engine hosted at ai-personal-assistant-464q23nsnxufete6hooju5.streamlit.app",
+    liveUrl: "https://ai-personal-assistant-464q23nsnxufete6hooju5.streamlit.app/",
     pdfViewerUrl: "/Project_1_AI_Personal_Assistant_Mohammed_Kaderji_Report.pdf",
     githubUrl: "https://github.com/Mohammed905-stack/ai-personal-assistant",
     primaryButtonText: "Launch Live App ↗",
-    primaryButtonUrl: "https://kaderji-personal-assistant.streamlit.app",
+    primaryButtonUrl: "https://ai-personal-assistant-464q23nsnxufete6hooju5.streamlit.app/",
     secondaryButtonText: "📄 View Case Study PDF ↗",
     secondaryButtonUrl: "/Project_1_AI_Personal_Assistant_Mohammed_Kaderji_Report.pdf",
     tertiaryButtonText: "View GitHub Repository ↗",
@@ -92,19 +177,19 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
   },
   {
     id: "ai-content-creator-application",
-    title: "AI Content Creator Application",
+    title: "AI Content Creator",
     category: "GENERATIVE AI / CONTENT AUTOMATION",
-    badge: "Port 8502 • Multi-Channel",
-    stack: ["Python", "Streamlit", "Gemini 3.6 Flash"],
-    tech: ["Python", "Streamlit", "Gemini 3.6 Flash"],
-    overview: "Multi-platform copy generator dynamically engineering tailored outputs for LinkedIn, Instagram, Twitter, Emails, and Blog Outlines with interactive persona/tone control (Professional, Funny, Formal, Friendly).",
-    description: "Multi-platform copy generator dynamically engineering tailored outputs for LinkedIn, Instagram, Twitter, Emails, and Blog Outlines with interactive persona/tone control (Professional, Funny, Formal, Friendly).",
-    executionDetails: "Streamlit local host server on port 8502",
-    liveUrl: "https://kaderji-content-creator.streamlit.app",
+    badge: "Streamlit Cloud • Production",
+    stack: ["Python", "Streamlit", "Gemini API", "AI Content Generation"],
+    tech: ["Python", "Streamlit", "Gemini API", "AI Content Generation"],
+    overview: "An AI-powered content generation and optimization utility built with Python and Streamlit.",
+    description: "An AI-powered content generation and optimization utility built with Python and Streamlit.",
+    executionDetails: "Streamlit cloud engine hosted at ai-content-creator-7qzen2ftgmrssp4jgf2rzj.streamlit.app",
+    liveUrl: "https://ai-content-creator-7qzen2ftgmrssp4jgf2rzj.streamlit.app/",
     pdfViewerUrl: "/Project_2_AI_Content_Creator_Mohammed_Kaderji_Report.pdf",
     githubUrl: "https://github.com/Mohammed905-stack/ai-content-creator",
     primaryButtonText: "Launch Live App ↗",
-    primaryButtonUrl: "https://kaderji-content-creator.streamlit.app",
+    primaryButtonUrl: "https://ai-content-creator-7qzen2ftgmrssp4jgf2rzj.streamlit.app/",
     secondaryButtonText: "📄 View Case Study PDF ↗",
     secondaryButtonUrl: "/Project_2_AI_Content_Creator_Mohammed_Kaderji_Report.pdf",
     tertiaryButtonText: "View GitHub Repository ↗",
@@ -118,19 +203,19 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
   },
   {
     id: "ai-pdf-assistant-document-intelligence",
-    title: "AI PDF Assistant & Document Intelligence",
+    title: "AI PDF Assistant",
     category: "DOCUMENT AI / RETRIEVAL & PROCESSING",
-    badge: "Port 8503 • Document AI",
-    stack: ["Python", "Streamlit", "PyPDF", "Gemini 3.6 Flash"],
-    tech: ["Python", "Streamlit", "PyPDF", "Gemini 3.6 Flash"],
-    overview: "Context-grounded document reader extracting text across multi-page PDFs, providing strict in-context question answering, automated bullet summarization, and multilingual translation.",
-    description: "Context-grounded document reader extracting text across multi-page PDFs, providing strict in-context question answering, automated bullet summarization, and multilingual translation.",
-    executionDetails: "Streamlit local host server on port 8503",
-    liveUrl: "https://kaderji-pdf-assistant.streamlit.app",
+    badge: "Streamlit Cloud • Production",
+    stack: ["Python", "Streamlit", "RAG", "Document AI"],
+    tech: ["Python", "Streamlit", "RAG", "Document AI"],
+    overview: "An intelligent document querying and RAG assistant for analyzing PDFs and answering questions with context.",
+    description: "An intelligent document querying and RAG assistant for analyzing PDFs and answering questions with context.",
+    executionDetails: "Streamlit cloud engine hosted at ai-pdf-assistant-5u7wxvr9pxffmxvqfpgfw8.streamlit.app",
+    liveUrl: "https://ai-pdf-assistant-5u7wxvr9pxffmxvqfpgfw8.streamlit.app/",
     pdfViewerUrl: "/Project_3_AI_PDF_Assistant_Mohammed_Kaderji_Report.pdf",
     githubUrl: "https://github.com/Mohammed905-stack/ai-pdf-assistant",
     primaryButtonText: "Launch Live App ↗",
-    primaryButtonUrl: "https://kaderji-pdf-assistant.streamlit.app",
+    primaryButtonUrl: "https://ai-pdf-assistant-5u7wxvr9pxffmxvqfpgfw8.streamlit.app/",
     secondaryButtonText: "📄 View Case Study PDF ↗",
     secondaryButtonUrl: "/Project_3_AI_PDF_Assistant_Mohammed_Kaderji_Report.pdf",
     tertiaryButtonText: "View GitHub Repository ↗",
@@ -146,16 +231,16 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
     id: "global-trade-ocean-bl-auditor",
     title: "Global Trade & Ocean B/L Document Auditor",
     category: "EXIM LOGISTICS & COMPLIANCE AI",
-    tech: ["Python", "Streamlit", "PyPDF", "Google Gemini 3.6 Flash"],
-    stack: ["Python", "Streamlit", "PyPDF", "Google Gemini 3.6 Flash"],
-    description: "Autonomous shipping compliance engine auditing Ocean Bills of Lading against UCP 600, checking HS codes, and generating customs clearance verdicts.",
-    overview: "Autonomous shipping compliance engine auditing Ocean Bills of Lading against UCP 600, checking HS codes, and generating customs clearance verdicts.",
+    tech: ["Python", "Streamlit", "Supply Chain", "Logistics Compliance"],
+    stack: ["Python", "Streamlit", "Supply Chain", "Logistics Compliance"],
+    description: "Autonomous Shipping Compliance Engine for freight forwarders and logistics teams to audit Ocean Bills of Lading, commercial invoices, and packing lists for discrepancies.",
+    overview: "Autonomous Shipping Compliance Engine for freight forwarders and logistics teams to audit Ocean Bills of Lading, commercial invoices, and packing lists for discrepancies.",
     executionDetails: "Streamlit cloud engine auditing maritime trade documents & UCP 600 rules",
-    liveUrl: "https://kaderji-cargo-auditor.streamlit.app",
+    liveUrl: "https://kaderji-cargo-auditor.streamlit.app/",
     pdfViewerUrl: "/ai-shipping-bl-auditor_Mohammed_Kaderji_Report.pdf",
     githubUrl: "https://github.com/Mohammed905-stack/ai-shipping-bl-auditor",
     primaryButtonText: "Launch Live App ↗",
-    primaryButtonUrl: "https://kaderji-cargo-auditor.streamlit.app",
+    primaryButtonUrl: "https://kaderji-cargo-auditor.streamlit.app/",
     secondaryButtonText: "📄 View Case Study PDF ↗",
     secondaryButtonUrl: "/ai-shipping-bl-auditor_Mohammed_Kaderji_Report.pdf",
     tertiaryButtonText: "View GitHub Repository ↗",
@@ -496,6 +581,142 @@ export const getTechStackBadge = (tech: string) => {
       bg: 'bg-purple-950/20'
     };
   }
+  if (lower.includes('fastapi')) {
+    return {
+      icon: <Cpu className="w-3 h-3 shrink-0 text-emerald-400" />,
+      border: 'border-emerald-500/30 hover:border-emerald-500/60',
+      text: 'text-emerald-200',
+      bg: 'bg-emerald-950/20'
+    };
+  }
+  if (lower.includes('langgraph')) {
+    return {
+      icon: <Workflow className="w-3 h-3 shrink-0 text-cyan-400" />,
+      border: 'border-cyan-500/30 hover:border-cyan-500/60',
+      text: 'text-cyan-200',
+      bg: 'bg-cyan-950/20'
+    };
+  }
+  if (lower.includes('faiss')) {
+    return {
+      icon: <FileSearch className="w-3 h-3 shrink-0 text-sky-400" />,
+      border: 'border-sky-500/30 hover:border-sky-500/60',
+      text: 'text-sky-200',
+      bg: 'bg-sky-950/20'
+    };
+  }
+  if (lower.includes('sqlite') || lower.includes('sql')) {
+    return {
+      icon: <Layers className="w-3 h-3 shrink-0 text-blue-400" />,
+      border: 'border-blue-500/30 hover:border-blue-500/60',
+      text: 'text-blue-200',
+      bg: 'bg-blue-950/20'
+    };
+  }
+  if (lower.includes('pydantic')) {
+    return {
+      icon: <ShieldCheck className="w-3 h-3 shrink-0 text-rose-400" />,
+      border: 'border-rose-500/30 hover:border-rose-500/60',
+      text: 'text-rose-200',
+      bg: 'bg-rose-950/20'
+    };
+  }
+  if (lower.includes('rag')) {
+    return {
+      icon: <BookOpen className="w-3 h-3 shrink-0 text-cyan-400" />,
+      border: 'border-cyan-500/30 hover:border-cyan-500/60',
+      text: 'text-cyan-200',
+      bg: 'bg-cyan-950/20'
+    };
+  }
+  if (lower.includes('document')) {
+    return {
+      icon: <FileSearch className="w-3 h-3 shrink-0 text-emerald-400" />,
+      border: 'border-emerald-500/30 hover:border-emerald-500/60',
+      text: 'text-emerald-200',
+      bg: 'bg-emerald-950/20'
+    };
+  }
+  if (lower.includes('content') || lower.includes('generation')) {
+    return {
+      icon: <Sparkles className="w-3 h-3 shrink-0 text-purple-400" />,
+      border: 'border-purple-500/30 hover:border-purple-500/60',
+      text: 'text-purple-200',
+      bg: 'bg-purple-950/20'
+    };
+  }
+  if (lower.includes('automation')) {
+    return {
+      icon: <Workflow className="w-3 h-3 shrink-0 text-indigo-400" />,
+      border: 'border-indigo-500/30 hover:border-indigo-500/60',
+      text: 'text-indigo-200',
+      bg: 'bg-indigo-950/20'
+    };
+  }
+  if (lower.includes('assistant')) {
+    return {
+      icon: <Bot className="w-3 h-3 shrink-0 text-cyan-400" />,
+      border: 'border-cyan-500/30 hover:border-cyan-500/60',
+      text: 'text-cyan-200',
+      bg: 'bg-cyan-950/20'
+    };
+  }
+  if (lower.includes('supply chain') || lower.includes('shipping') || lower.includes('logistics')) {
+    return {
+      icon: <Ship className="w-3 h-3 shrink-0 text-teal-400" />,
+      border: 'border-teal-500/30 hover:border-teal-500/60',
+      text: 'text-teal-200',
+      bg: 'bg-teal-950/20'
+    };
+  }
+  if (lower.includes('speech')) {
+    return {
+      icon: <Mic className="w-3 h-3 shrink-0 text-amber-400" />,
+      border: 'border-amber-500/30 hover:border-amber-500/60',
+      text: 'text-amber-200',
+      bg: 'bg-amber-950/20'
+    };
+  }
+  if (lower.includes('express')) {
+    return {
+      icon: <Cpu className="w-3 h-3 shrink-0 text-slate-300" />,
+      border: 'border-slate-500/30 hover:border-slate-500/60',
+      text: 'text-slate-200',
+      bg: 'bg-slate-900/40'
+    };
+  }
+  if (lower.includes('node')) {
+    return {
+      icon: <Cpu className="w-3 h-3 shrink-0 text-emerald-400" />,
+      border: 'border-emerald-500/30 hover:border-emerald-500/60',
+      text: 'text-emerald-200',
+      bg: 'bg-emerald-950/20'
+    };
+  }
+  if (lower.includes('rest') || lower.includes('api')) {
+    return {
+      icon: <Globe className="w-3 h-3 shrink-0 text-sky-400" />,
+      border: 'border-sky-500/30 hover:border-sky-500/60',
+      text: 'text-sky-200',
+      bg: 'bg-sky-950/20'
+    };
+  }
+  if (lower.includes('javascript') || lower.includes('js')) {
+    return {
+      icon: <Cpu className="w-3 h-3 shrink-0 text-amber-300" />,
+      border: 'border-amber-500/30 hover:border-amber-500/60',
+      text: 'text-amber-200',
+      bg: 'bg-amber-950/20'
+    };
+  }
+  if (lower.includes('html') || lower.includes('css')) {
+    return {
+      icon: <Layers className="w-3 h-3 shrink-0 text-orange-400" />,
+      border: 'border-orange-500/30 hover:border-orange-500/60',
+      text: 'text-orange-200',
+      bg: 'bg-orange-950/20'
+    };
+  }
   if (lower.includes('prompt') || lower.includes('compliance')) {
     return {
       icon: <ShieldCheck className="w-3 h-3 shrink-0 text-amber-400" />,
@@ -516,6 +737,20 @@ export type ProjectFilterType = 'All' | 'AI Apps' | 'n8n Automations';
 
 export const ProjectsGallery: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<ProjectFilterType>('All');
+  const [selectedProjectForModal, setSelectedProjectForModal] = useState<AICapstoneProject | null>(null);
+
+  // Close modal on Escape key press
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedProjectForModal(null);
+      }
+    };
+    if (selectedProjectForModal) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedProjectForModal]);
 
   const isN8nAutomation = (p: AICapstoneProject) =>
     p.id === "autonomous-linkedin-content-pipeline" ||
@@ -573,6 +808,10 @@ export const ProjectsGallery: React.FC = () => {
         return <Sparkles className="w-5 h-5 text-purple-400" />;
       case 'docai':
         return <FileSearch className="w-5 h-5 text-emerald-400" />;
+      case 'rag':
+        return <BookOpen className="w-5 h-5 text-emerald-400" />;
+      case 'voice':
+        return <Mic className="w-5 h-5 text-amber-400" />;
       case 'workflow':
         return <Workflow className="w-5 h-5 text-blue-400" />;
       case 'telegram':
@@ -604,260 +843,246 @@ export const ProjectsGallery: React.FC = () => {
       {/* =========================================================================
           PART 1: AI & Automation Capstone Projects
           ========================================================================= */}
-      <div className="flex flex-col items-center text-center mb-8 relative z-10">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900/90 border border-cyan-500/30 text-cyan-400 text-xs font-semibold tracking-wider uppercase mb-3 shadow-sm backdrop-blur-md">
-          <Cpu className="w-3.5 h-3.5 text-cyan-400" />
-          <span>Part 1 • Backend & Automation Capstones</span>
+      <div className="relative z-10 mb-20">
+        <div className="flex flex-col items-center text-center mb-8">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900/90 border border-cyan-500/30 text-cyan-400 text-xs font-semibold tracking-wider uppercase mb-3 shadow-sm backdrop-blur-md">
+            <Cpu className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Part 1 • AI & Automation Capstones ({AI_CAPSTONE_PROJECTS.length} Projects)</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+            AI & Automation Capstones
+          </h2>
+          <p className="mt-3 text-slate-300 max-w-2xl text-sm sm:text-base leading-relaxed">
+            Production-grade generative AI services, autonomous n8n orchestration pipelines, and document intelligence systems. Direct links to live deployments and verified architecture reports.
+          </p>
         </div>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-          AI & Automation Capstones
-        </h2>
-        <p className="mt-3 text-slate-300 max-w-2xl text-sm sm:text-base leading-relaxed">
-          Production-grade generative AI services, autonomous n8n orchestration pipelines, and document intelligence systems. Direct links to live deployments and verified architecture reports.
-        </p>
-      </div>
 
-      {/* Simple Filter Bar: 'All' | 'AI Apps' | 'n8n Automations' */}
-      <div className="flex justify-center mb-10 relative z-10">
-        <div 
-          role="tablist" 
-          aria-label="Filter projects by category"
-          className="p-1 sm:p-1.5 rounded-full bg-slate-900/90 border border-slate-800 backdrop-blur-xl shadow-xl shadow-cyan-950/20 inline-flex items-center gap-1 sm:gap-2"
-        >
-          {filterTabs.map((tab) => {
-            const isActive = activeFilter === tab.id;
-            return (
-              <button
-                key={tab.id}
-                role="tab"
-                aria-selected={isActive}
-                id={`filter-${tab.id.toLowerCase().replace(/\s+/g, '-')}`}
-                onClick={() => setActiveFilter(tab.id)}
-                className={`relative px-3.5 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center gap-2 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 interactive-element ${
-                  isActive
-                    ? 'text-slate-950 shadow-md shadow-cyan-500/20'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
-                }`}
-              >
-                {isActive && (
-                  <motion.div
-                    layoutId="activeFilterPill"
-                    className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500"
-                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10 flex items-center gap-1.5">
-                  {tab.icon}
-                  <span>{tab.label}</span>
-                </span>
-                <span
-                  className={`relative z-10 text-[10px] font-mono px-1.5 py-0.5 rounded-full font-bold ${
+        {/* Simple Filter Bar: 'All' | 'AI Apps' | 'n8n Automations' */}
+        <div className="flex justify-center mb-10 relative z-10">
+          <div 
+            role="tablist" 
+            aria-label="Filter projects by category"
+            className="p-1 sm:p-1.5 rounded-full bg-slate-900/90 border border-slate-800 backdrop-blur-xl shadow-xl shadow-cyan-950/20 inline-flex items-center gap-1 sm:gap-2"
+          >
+            {filterTabs.map((tab) => {
+              const isActive = activeFilter === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  role="tab"
+                  aria-selected={isActive}
+                  id={`filter-${tab.id.toLowerCase().replace(/\s+/g, '-')}`}
+                  onClick={() => setActiveFilter(tab.id)}
+                  className={`relative px-3.5 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center gap-2 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 interactive-element ${
                     isActive
-                      ? 'bg-slate-950/20 text-slate-950'
-                      : 'bg-slate-800 text-slate-400 border border-slate-700/60'
+                      ? 'text-slate-950 shadow-md shadow-cyan-500/20'
+                      : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
                   }`}
                 >
-                  {tab.count}
-                </span>
-              </button>
-            );
-          })}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeFilterPill"
+                      className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500"
+                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10 flex items-center gap-1.5">
+                    {tab.icon}
+                    <span>{tab.label}</span>
+                  </span>
+                  <span
+                    className={`relative z-10 text-[10px] font-mono px-1.5 py-0.5 rounded-full font-bold ${
+                      isActive
+                        ? 'bg-slate-950/20 text-slate-950'
+                        : 'bg-slate-800 text-slate-400 border border-slate-700/60'
+                    }`}
+                  >
+                    {tab.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
-      </div>
 
-      {/* Capstone Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 relative z-10 mb-28">
-        <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project, index) => (
-            <motion.article
-              layout
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.96 }}
-              transition={{ duration: 0.28 }}
-              key={project.id}
-              className={`group relative flex flex-col rounded-3xl bg-gradient-to-b ${project.cardBgGradient} border border-slate-800/80 overflow-hidden ${project.cardBorderAccent} hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-300 interactive-element`}
-            >
-            {/* Thumbnail Header */}
-            <div className="relative h-52 w-full overflow-hidden bg-slate-950">
-              <img
-                src={project.thumbnail}
-                alt={project.title}
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-85 group-hover:opacity-100"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-black/30 to-black/50" />
+        {/* Capstone Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 relative z-10">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, index) => (
+              <motion.article
+                layout
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.28 }}
+                key={project.id}
+                className={`group relative flex flex-col rounded-3xl bg-gradient-to-b ${project.cardBgGradient} border border-slate-800/80 overflow-hidden ${project.cardBorderAccent} hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-300 interactive-element`}
+              >
+              {/* Thumbnail Header */}
+              <div className="relative h-52 w-full overflow-hidden bg-slate-950">
+                <img
+                  src={project.thumbnail}
+                  alt={project.title}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-85 group-hover:opacity-100"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-black/30 to-black/50" />
 
-              {/* Top Badge */}
-              <div className="absolute top-3.5 left-3.5 z-10">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold border backdrop-blur-md shadow-md bg-slate-900/90 text-cyan-300 border-cyan-500/40">
-                  {renderContextIcon(project.contextType)}
-                  {project.badge}
-                </span>
-              </div>
-
-              {/* Execution Indicator */}
-              <div className="absolute bottom-3 left-3.5 z-10">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-mono text-slate-200 bg-slate-950/85 border border-slate-700/70 backdrop-blur-md">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  {project.executionDetails.includes('port') ? project.executionDetails.substring(project.executionDetails.indexOf('port')) : 'Pipeline Active'}
-                </span>
-              </div>
-            </div>
-
-            {/* Content Body */}
-            <div className="p-6 flex-1 flex flex-col justify-between relative z-10">
-              <div>
-                <div className="text-xs font-semibold text-cyan-400 tracking-wide uppercase mb-1">
-                  {project.category}
+                {/* Top Badge */}
+                <div className="absolute top-3.5 left-3.5 z-10">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold border backdrop-blur-md shadow-md bg-slate-900/90 text-cyan-300 border-cyan-500/40">
+                    {renderContextIcon(project.contextType)}
+                    {project.badge}
+                  </span>
                 </div>
-                <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3">
-                  {project.overview}
-                </p>
 
-                {/* Tech Stack Pills with Small Icon Badges */}
-                <div className="flex flex-wrap gap-1.5 mb-5">
-                  {project.stack.map((tech, tIdx) => {
-                    const badge = getTechStackBadge(tech);
-                    return (
-                      <span
-                        key={tIdx}
-                        className={`inline-flex items-center gap-1.5 text-[10px] font-mono font-medium px-2 py-0.5 rounded-md border ${badge.bg} ${badge.border} ${badge.text} transition-colors shadow-2xs`}
-                      >
-                        {badge.icon}
-                        <span>{tech}</span>
-                      </span>
-                    );
-                  })}
+                {/* Execution Indicator */}
+                <div className="absolute bottom-3 left-3.5 z-10">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-mono text-slate-200 bg-slate-950/85 border border-slate-700/70 backdrop-blur-md">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    {project.executionIndicator || (project.executionDetails.includes('port') ? project.executionDetails.substring(project.executionDetails.indexOf('port')) : 'Pipeline Active')}
+                  </span>
                 </div>
               </div>
 
-              {/* Project Action Buttons: Standard HTML <a> tags only */}
-              <div className="pt-4 border-t border-slate-800/80 space-y-2.5">
-                {project.id === "autonomous-linkedin-content-pipeline" ? (
-                  <>
-                    <a
-                      href="/linkedin-automation-case-study.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      id={`view-case-study-${project.id}`}
-                      className="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium text-xs flex items-center justify-center gap-1.5 hover:opacity-95 transition"
-                    >
-                      📄 Read Case Study PDF ↗
-                    </a>
-                    <a
-                      href="/linkedin-proof.png"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      id={`view-proof-${project.id}`}
-                      className="w-full py-2 px-3 rounded-xl border border-cyan-500/40 text-cyan-300 font-medium text-xs flex items-center justify-center gap-1.5 hover:bg-cyan-500/10 transition"
-                    >
-                      🔍 View n8n Canvas Proof ↗
-                    </a>
-                  </>
-                ) : project.id === "autonomous-telegram-customer-assistant" ? (
-                  <>
-                    <a
-                      href="/telegram-bot-case-study.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      id={`view-case-study-${project.id}`}
-                      className="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium text-xs flex items-center justify-center gap-1.5 hover:opacity-95 transition"
-                    >
-                      📄 Read Case Study PDF ↗
-                    </a>
-                    <a
-                      href="/telegram-proof.png"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      id={`view-proof-${project.id}`}
-                      className="w-full py-2 px-3 rounded-xl border border-cyan-500/40 text-cyan-300 font-medium text-xs flex items-center justify-center gap-1.5 hover:bg-cyan-500/10 transition"
-                    >
-                      🔍 View Bot & Canvas Proof ↗
-                    </a>
-                  </>
-                ) : project.id === "ai-customs-hs-code-auditor" ? (
-                  <>
-                    <a
-                      href="/hs_code_compliance_project_documentation.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      id={`view-case-study-${project.id}`}
-                      className="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium text-xs flex items-center justify-center gap-1.5 hover:opacity-95 transition"
-                    >
-                      📄 Read Case Study PDF ↗
-                    </a>
-                    <a
-                      href="https://github.com/Mohammed905-stack/AI-Customs-HS-Code-Auditor-"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      id={`view-github-${project.id}`}
-                      className="w-full py-2 px-3 rounded-xl border border-cyan-500/40 text-cyan-300 font-medium text-xs flex items-center justify-center gap-1.5 hover:bg-cyan-500/10 transition"
-                    >
-                      <Github className="w-3.5 h-3.5 text-cyan-300" />
-                      <span>View GitHub Repository ↗</span>
-                    </a>
-                  </>
-                ) : project.tertiaryButtonUrl ? (
-                  <>
-                    {/* Button 1: Launch Live App ↗ */}
-                    <a
-                      href={project.liveUrl || project.primaryButtonUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      id={`launch-app-${project.id}`}
-                      className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold shadow-md flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 transition-all duration-200 group/btn interactive-element"
-                    >
-                      <Play className="w-3.5 h-3.5 fill-slate-950 text-slate-950" />
-                      <span>{project.primaryButtonText}</span>
-                    </a>
+              {/* Content Body */}
+              <div className="p-6 flex-1 flex flex-col justify-between relative z-10">
+                <div>
+                  <div className="text-xs font-semibold text-cyan-400 tracking-wide uppercase mb-1">
+                    {project.category}
+                  </div>
+                  <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3">
+                    {project.overview}
+                  </p>
 
-                    {/* Button 2: 📄 View Case Study PDF ↗ */}
-                    <a
-                      href={project.pdfViewerUrl || project.secondaryButtonUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      id={`view-case-study-${project.id}`}
-                      className="w-full py-2 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/70 hover:border-slate-600 transition-all duration-200 group/subbtn interactive-element"
-                    >
-                      <FileText className="w-3.5 h-3.5 text-cyan-400" />
-                      <span>{project.secondaryButtonText}</span>
-                    </a>
+                  {/* Tech Stack Pills with Small Icon Badges */}
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {project.stack.map((tech, tIdx) => {
+                      const badge = getTechStackBadge(tech);
+                      return (
+                        <span
+                          key={tIdx}
+                          className={`inline-flex items-center gap-1.5 text-[10px] font-mono font-medium px-2 py-0.5 rounded-md border ${badge.bg} ${badge.border} ${badge.text} transition-colors shadow-2xs`}
+                        >
+                          {badge.icon}
+                          <span>{tech}</span>
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
 
-                    {/* Button 3: View GitHub Repository ↗ */}
-                    <a
-                      href={project.githubUrl || project.tertiaryButtonUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      id={`view-github-${project.id}`}
-                      className="w-full py-2 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/70 hover:border-slate-600 transition-all duration-200 group/subbtn interactive-element"
-                    >
-                      <Github className="w-3.5 h-3.5 text-slate-400" />
-                      <span>{project.tertiaryButtonText}</span>
-                    </a>
-                  </>
-                ) : (
-                  <>
-                    {/* Button 1: Launch App */}
-                    <a
-                      href={project.primaryButtonUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      id={`launch-app-${project.id}`}
-                      className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold shadow-md flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 transition-all duration-200 group/btn interactive-element"
-                    >
-                      <Play className="w-3.5 h-3.5 fill-slate-950 text-slate-950" />
-                      <span>{project.primaryButtonText}</span>
-                      <ArrowUpRight className="w-4 h-4 text-slate-950 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                    </a>
-
-                    {/* Button 2: Case Study PDF */}
-                    {project.secondaryButtonUrl && (
+                {/* Project Action Buttons: Standard HTML <a> tags only */}
+                <div className="pt-4 border-t border-slate-800/80 space-y-2.5">
+                  {project.isAssessment ? (
+                    <>
+                      {/* Primary Button: View Source on GitHub */}
                       <a
-                        href={project.secondaryButtonUrl}
+                        href={project.primaryButtonUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        id={`source-btn-${project.id}`}
+                        className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold shadow-md flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 transition-all duration-200 group/btn interactive-element"
+                      >
+                        <Github className="w-4 h-4 text-slate-950" />
+                        <span>{project.primaryButtonText}</span>
+                      </a>
+
+                      {/* Secondary Button: Architecture & Assessment Details (Modal Trigger) */}
+                      <button
+                        type="button"
+                        onClick={() => setSelectedProjectForModal(project)}
+                        id={`details-btn-${project.id}`}
+                        className="w-full py-2 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/70 hover:border-cyan-500/40 transition-all duration-200 group/subbtn interactive-element cursor-pointer"
+                      >
+                        <Info className="w-3.5 h-3.5 text-cyan-400" />
+                        <span>Architecture & Assessment Details</span>
+                      </button>
+                    </>
+                  ) : project.id === "autonomous-linkedin-content-pipeline" ? (
+                    <>
+                      <a
+                        href="/linkedin-automation-case-study.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        id={`view-case-study-${project.id}`}
+                        className="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium text-xs flex items-center justify-center gap-1.5 hover:opacity-95 transition"
+                      >
+                        📄 Read Case Study PDF ↗
+                      </a>
+                      <a
+                        href="/linkedin-proof.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        id={`view-proof-${project.id}`}
+                        className="w-full py-2 px-3 rounded-xl border border-cyan-500/40 text-cyan-300 font-medium text-xs flex items-center justify-center gap-1.5 hover:bg-cyan-500/10 transition"
+                      >
+                        🔍 View n8n Canvas Proof ↗
+                      </a>
+                    </>
+                  ) : project.id === "autonomous-telegram-customer-assistant" ? (
+                    <>
+                      <a
+                        href="/telegram-bot-case-study.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        id={`view-case-study-${project.id}`}
+                        className="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium text-xs flex items-center justify-center gap-1.5 hover:opacity-95 transition"
+                      >
+                        📄 Read Case Study PDF ↗
+                      </a>
+                      <a
+                        href="/telegram-proof.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        id={`view-proof-${project.id}`}
+                        className="w-full py-2 px-3 rounded-xl border border-cyan-500/40 text-cyan-300 font-medium text-xs flex items-center justify-center gap-1.5 hover:bg-cyan-500/10 transition"
+                      >
+                        🔍 View Bot & Canvas Proof ↗
+                      </a>
+                    </>
+                  ) : project.id === "ai-customs-hs-code-auditor" ? (
+                    <>
+                      <a
+                        href="/hs_code_compliance_project_documentation.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        id={`view-case-study-${project.id}`}
+                        className="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium text-xs flex items-center justify-center gap-1.5 hover:opacity-95 transition"
+                      >
+                        📄 Read Case Study PDF ↗
+                      </a>
+                      <a
+                        href="https://github.com/Mohammed905-stack/AI-Customs-HS-Code-Auditor-"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        id={`view-github-${project.id}`}
+                        className="w-full py-2 px-3 rounded-xl border border-cyan-500/40 text-cyan-300 font-medium text-xs flex items-center justify-center gap-1.5 hover:bg-cyan-500/10 transition"
+                      >
+                        <Github className="w-3.5 h-3.5 text-cyan-300" />
+                        <span>View GitHub Repository ↗</span>
+                      </a>
+                    </>
+                  ) : project.tertiaryButtonUrl ? (
+                    <>
+                      {/* Button 1: Launch Live App ↗ */}
+                      <a
+                        href={project.liveUrl || project.primaryButtonUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        id={`launch-app-${project.id}`}
+                        className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold shadow-md flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 transition-all duration-200 group/btn interactive-element"
+                      >
+                        <Play className="w-3.5 h-3.5 fill-slate-950 text-slate-950" />
+                        <span>{project.primaryButtonText}</span>
+                      </a>
+
+                      {/* Button 2: 📄 View Case Study PDF ↗ */}
+                      <a
+                        href={project.pdfViewerUrl || project.secondaryButtonUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         id={`view-case-study-${project.id}`}
@@ -865,32 +1090,73 @@ export const ProjectsGallery: React.FC = () => {
                       >
                         <FileText className="w-3.5 h-3.5 text-cyan-400" />
                         <span>{project.secondaryButtonText}</span>
-                        <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover/subbtn:translate-x-0.5 group-hover/subbtn:-translate-y-0.5 transition-transform" />
                       </a>
-                    )}
-                  </>
-                )}
+
+                      {/* Button 3: View GitHub Repository ↗ */}
+                      <a
+                        href={project.githubUrl || project.tertiaryButtonUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        id={`view-github-${project.id}`}
+                        className="w-full py-2 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/70 hover:border-slate-600 transition-all duration-200 group/subbtn interactive-element"
+                      >
+                        <Github className="w-3.5 h-3.5 text-slate-400" />
+                        <span>{project.tertiaryButtonText}</span>
+                      </a>
+                    </>
+                  ) : (
+                    <>
+                      {/* Button 1: Launch App */}
+                      <a
+                        href={project.primaryButtonUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        id={`launch-app-${project.id}`}
+                        className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold shadow-md flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 transition-all duration-200 group/btn interactive-element"
+                      >
+                        <Play className="w-3.5 h-3.5 fill-slate-950 text-slate-950" />
+                        <span>{project.primaryButtonText}</span>
+                        <ArrowUpRight className="w-4 h-4 text-slate-950 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                      </a>
+
+                      {/* Button 2: Case Study PDF */}
+                      {project.secondaryButtonUrl && (
+                        <a
+                          href={project.secondaryButtonUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          id={`view-case-study-${project.id}`}
+                          className="w-full py-2 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/70 hover:border-slate-600 transition-all duration-200 group/subbtn interactive-element"
+                        >
+                          <FileText className="w-3.5 h-3.5 text-cyan-400" />
+                          <span>{project.secondaryButtonText}</span>
+                          <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover/subbtn:translate-x-0.5 group-hover/subbtn:-translate-y-0.5 transition-transform" />
+                        </a>
+                      )}
+                    </>
+                  )}
+                </div>
               </div>
-            </div>
-          </motion.article>
-        ))}
-        </AnimatePresence>
+            </motion.article>
+          ))}
+          </AnimatePresence>
+        </div>
       </div>
 
       {/* =========================================================================
-          PART 2: Web Development & Interactive Applications (Division 6)
+          PART 2: Web Development & Interactive Applications
           ========================================================================= */}
-      <div className="pt-8 border-t border-slate-800/80 relative z-10">
+      <div className="pt-16 border-t border-slate-800/80 relative z-10">
         <div className="flex flex-col items-center text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900/90 border border-blue-500/30 text-blue-400 text-xs font-semibold tracking-wider uppercase mb-3 shadow-sm backdrop-blur-md">
             <Globe className="w-3.5 h-3.5 text-blue-400" />
-            <span>Part 2 • Division 6: Web Development</span>
+            <span>Part 2 • Web Development & Core Applications ({WEB_DEV_PROJECTS.length} Projects)</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
             Web Development & Interactive Applications
           </h2>
           <p className="mt-3 text-slate-300 max-w-2xl text-sm sm:text-base leading-relaxed">
-            Responsive client-side prototypes, dynamic growth trackers, and international trade compliance engines. Each links strictly to a clean, public runtime deployment.
+            Primary full-stack development, international trade cost engines, and responsive client-side growth trackers. Directly linked to clean, live production deployments.
           </p>
           <div className="inline-flex items-center gap-1.5 mt-3 text-xs text-slate-400 bg-slate-900/60 px-3 py-1 rounded-lg border border-slate-800">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
@@ -899,7 +1165,7 @@ export const ProjectsGallery: React.FC = () => {
         </div>
 
         {/* Web Dev Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 relative z-10 mb-20">
           {WEB_DEV_PROJECTS.map((webApp, wIdx) => (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -1021,6 +1287,148 @@ export const ProjectsGallery: React.FC = () => {
           ))}
         </div>
       </div>
+
+      {/* Project Architecture & Details Modal */}
+      <AnimatePresence>
+        {selectedProjectForModal && (
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/85 backdrop-blur-md overflow-y-auto"
+            onClick={() => setSelectedProjectForModal(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.25 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-gradient-to-b from-slate-900 via-[#0B0F19] to-slate-950 border border-slate-700/80 p-6 sm:p-8 shadow-2xl shadow-cyan-950/50"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="modal-project-title"
+            >
+              {/* Close Button */}
+              <button
+                type="button"
+                onClick={() => setSelectedProjectForModal(null)}
+                aria-label="Close project details"
+                className="absolute top-5 right-5 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Modal Header */}
+              <div className="flex flex-wrap items-center gap-2 mb-3 pr-10">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-slate-900 border border-cyan-500/40 text-cyan-300">
+                  {renderContextIcon(selectedProjectForModal.contextType)}
+                  {selectedProjectForModal.category}
+                </span>
+                <span className="px-2.5 py-1 rounded-full text-[11px] font-mono font-medium bg-slate-800 text-slate-300 border border-slate-700">
+                  {selectedProjectForModal.badge}
+                </span>
+              </div>
+
+              <h3 id="modal-project-title" className="text-2xl sm:text-3xl font-extrabold text-white mb-2 tracking-tight">
+                {selectedProjectForModal.title}
+              </h3>
+
+              {/* Status / Assessment Context Banner */}
+              <div className="mb-6 p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 flex items-start gap-2.5 text-xs text-slate-300">
+                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  {selectedProjectForModal.status && (
+                    <div className="font-semibold text-emerald-300">
+                      Status: {selectedProjectForModal.status}
+                    </div>
+                  )}
+                  {selectedProjectForModal.assessmentContext && (
+                    <div className="text-slate-400">
+                      Assessment Context: {selectedProjectForModal.assessmentContext}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Detailed Description */}
+              <div className="mb-6">
+                <h4 className="text-xs font-bold text-cyan-400 uppercase tracking-wider mb-2">
+                  Project Architecture & Detailed Description
+                </h4>
+                <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                  {selectedProjectForModal.detailedDescription || selectedProjectForModal.overview}
+                </p>
+              </div>
+
+              {/* Features List (if available) */}
+              {selectedProjectForModal.features && selectedProjectForModal.features.length > 0 && (
+                <div className="mb-6">
+                  <h4 className="text-xs font-bold text-cyan-400 uppercase tracking-wider mb-3">
+                    Key Features & Technical Capabilities
+                  </h4>
+                  <ul className="space-y-2">
+                    {selectedProjectForModal.features.map((feature, fIdx) => (
+                      <li key={fIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                        <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                        <span className="leading-snug">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Development & Testing Note (if available) */}
+              {selectedProjectForModal.devNote && (
+                <div className="mb-6 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 text-xs text-slate-300">
+                  <span className="font-bold text-slate-200 block mb-1">Development & Testing Note:</span>
+                  <p className="text-slate-400 leading-relaxed">{selectedProjectForModal.devNote}</p>
+                </div>
+              )}
+
+              {/* Tech Stack */}
+              <div className="mb-6">
+                <h4 className="text-xs font-bold text-cyan-400 uppercase tracking-wider mb-2">
+                  Technology Stack
+                </h4>
+                <div className="flex flex-wrap gap-1.5">
+                  {selectedProjectForModal.stack.map((t, idx) => {
+                    const badge = getTechStackBadge(t);
+                    return (
+                      <span
+                        key={idx}
+                        className={`inline-flex items-center gap-1.5 text-[11px] font-mono font-medium px-2.5 py-1 rounded-md border ${badge.bg} ${badge.border} ${badge.text}`}
+                      >
+                        {badge.icon}
+                        <span>{t}</span>
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Footer Actions */}
+              <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+                {selectedProjectForModal.githubUrl && (
+                  <a
+                    href={selectedProjectForModal.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto py-2.5 px-5 rounded-xl text-xs sm:text-sm font-bold text-slate-950 bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 transition-all flex items-center justify-center gap-2 group cursor-pointer"
+                  >
+                    <Github className="w-4 h-4 text-slate-950" />
+                    <span>{selectedProjectForModal.primaryButtonText || "View Source on GitHub ↗"}</span>
+                  </a>
+                )}
+                <button
+                  type="button"
+                  onClick={() => setSelectedProjectForModal(null)}
+                  className="w-full sm:w-auto py-2.5 px-5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white bg-slate-800/80 hover:bg-slate-700 transition cursor-pointer"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
