@@ -182,13 +182,13 @@ export const ResumeSection: React.FC = () => {
               {/* Cert 2 */}
               <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/30 hover:border-cyan-400/60 transition-all duration-200 space-y-1.5 shadow-sm">
                 <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-cyan-950/90 border border-cyan-500/50 text-cyan-300">
-                  AI Workflows & Agents
+                  Grade: A • October 2026
                 </span>
                 <h5 className="text-xs sm:text-sm font-bold text-white">
                   AI for Business Leaders Bootcamp
                 </h5>
                 <p className="text-xs text-slate-400">
-                  Outskill (Prompt Engineering, AI Workflows, N8N)
+                  GrowthSchool / SISINTY PRIVATE LIMITED
                 </p>
               </div>
 
@@ -215,6 +215,30 @@ export const ResumeSection: React.FC = () => {
                 </h5>
                 <p className="text-xs text-slate-400">
                   Skill Course (ID: SC-95537CEEAB)
+                </p>
+              </div>
+
+              {/* Cert 5 */}
+              <div className="p-4 rounded-xl bg-slate-950/70 border border-cyan-500/30 hover:border-cyan-400/60 transition-all duration-200 space-y-1.5 shadow-sm">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-cyan-950/90 border border-cyan-500/50 text-cyan-300">
+                    ID: CERT-4D7D08DE-20AE-4977
+                  </span>
+                  <a
+                    href="https://www.creadefy.com/verify/CERT-4D7D08DE-20AE-4977"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[11px] text-cyan-300 hover:text-cyan-200 inline-flex items-center gap-1 font-semibold"
+                  >
+                    <span>Verify Credential</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+                <h5 className="text-xs sm:text-sm font-bold text-white">
+                  Artificial Intelligence Training
+                </h5>
+                <p className="text-xs text-slate-400">
+                  Tripple One Solutions (Aug–Sep 2026)
                 </p>
               </div>
             </div>

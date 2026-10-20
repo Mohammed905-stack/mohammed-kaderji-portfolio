@@ -10,6 +10,7 @@ export interface ProjectItem {
   id: string;
   title: string;
   category: 'AI Agents' | 'Automation Workflows' | 'Document Intelligence' | 'AI Web Apps' | 'EXIM LOGISTICS & COMPLIANCE AI' | string;
+  filterCategory?: 'AI Apps' | 'Automations';
   tagline: string;
   description: string;
   highlights: string[];
@@ -90,7 +91,7 @@ export const PERSONAL_INFO = {
   resumeDownloadName: "Mohammed_Kaderji_Resume.pdf",
   // Direct high-resolution profile photo
   headshotUrl: "https://i.postimg.cc/KvG1gK9V/Chat-GPT-Image-Sep-14-2026-08-29-25-PM.png",
-  bio: "A proactive Commerce graduate combining deep foundational coursework in EXIM Logistics and Ocean Freight with hands-on expertise in generative AI agent development, n8n automations, and data analytics. Focused on modernizing supply chains and eliminating manual bottlenecks.",
+  bio: "A proactive Final-year B.Com student combining deep foundational coursework in EXIM Logistics and Ocean Freight with hands-on expertise in generative AI agent development, n8n automations, and data analytics. Focused on modernizing supply chains and eliminating manual bottlenecks.",
 };
 
 // -----------------------------------------------------------------------
@@ -121,6 +122,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: "express-docs-rag-assistant",
     title: "Express Docs — AI Technical Documentation Assistant",
     category: "Agentic AI / RAG",
+    filterCategory: "AI Apps",
     tagline: "LangGraph & FastAPI RAG Assistant indexing technical docs with citation validation",
     description:
       "An AI assistant that searches technical documentation and produces answers with supporting sources. Built with AI-assisted development for the Express Analytics Data Science Intern assessment.",
@@ -162,6 +164,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: "aria-ai-voice-customer-support",
     title: "Aria — AI Voice Customer Support Assistant",
     category: "Voice AI / Customer Support",
+    filterCategory: "AI Apps",
     tagline: "Browser voice assistant handling sample order queries and skincare policies",
     description:
       "A browser-based voice assistant for the fictional Aura Skincare brand, handling sample order enquiries and policy questions with spoken responses.",
@@ -205,6 +208,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: "ai-personal-assistant-chatbot",
     title: "AI Personal Assistant",
     category: "AI Agents",
+    filterCategory: "AI Apps",
     tagline: "Python & Streamlit productivity and workflow automation assistant",
     description:
       "A productivity and workflow automation assistant built as an interactive web interface.",
@@ -231,6 +235,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: "ai-content-creator-application",
     title: "AI Content Creator",
     category: "AI Web Apps",
+    filterCategory: "AI Apps",
     tagline: "Python & Streamlit AI-powered content generation and optimization utility",
     description:
       "An AI-powered content generation and optimization utility built with Python and Streamlit.",
@@ -257,6 +262,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: "ai-pdf-assistant-document-intelligence",
     title: "AI PDF Assistant",
     category: "Document Intelligence",
+    filterCategory: "AI Apps",
     tagline: "Python & Streamlit intelligent document querying and RAG assistant",
     description:
       "An intelligent document querying and RAG assistant for analyzing PDFs and answering questions with context.",
@@ -283,6 +289,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: "global-trade-ocean-bl-auditor",
     title: "Global Trade & Ocean B/L Document Auditor",
     category: "EXIM LOGISTICS & COMPLIANCE AI",
+    filterCategory: "AI Apps",
     tagline: "Autonomous shipping compliance engine auditing Ocean Bills of Lading",
     description:
       "Autonomous Shipping Compliance Engine for freight forwarders and logistics teams to audit Ocean Bills of Lading, commercial invoices, and packing lists for discrepancies.",
@@ -309,6 +316,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: "autonomous-linkedin-content-pipeline",
     title: "Autonomous LinkedIn Content Pipeline",
     category: "Automation Workflows",
+    filterCategory: "Automations",
     tagline: "Autonomous pipeline polling Google Sheets and publishing via OAuth2",
     description:
       "Autonomous pipeline that continuously polls Google Sheets for article links, condenses core theses via LangChain, restructures them into viral LinkedIn social copy with opening hooks and hashtags, and publishes directly to personal feed via OAuth2.",
@@ -332,6 +340,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: "autonomous-telegram-customer-assistant",
     title: "24/7 Autonomous Telegram Customer Assistant",
     category: "AI Agents",
+    filterCategory: "Automations",
     tagline: "High-availability conversational bot with intent routing & memory",
     description:
       "High-availability conversational bot utilizing intent routing (Switch node) to handle transactional pricing ($20) and FAQ requests, while routing unstructured queries to a LangChain agent with conversation memory for multi-turn advisory roadmaps.",
@@ -355,6 +364,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: "ai-customs-hs-code-auditor",
     title: "AI-Powered Customs & HS Code Classification Auditor",
     category: "Automation Workflows",
+    filterCategory: "Automations",
     tagline: "Automated local n8n workflow with Gemini AI Agent for customs & HS code classification",
     description:
       "An automated local workflow built in n8n utilizing the Google Gemini AI Agent to streamline international trade compliance, classify products into Harmonized System (HS) chapters, and flag regulatory watch-outs.",
@@ -376,6 +386,47 @@ export const PROJECTS_DATA: ProjectItem[] = [
     cardBorderAccent: "hover:border-amber-400/60",
     projectContextType: "compliance",
     metricLabel: "n8n Local • Gemini Agent",
+  },
+  {
+    id: "recurring-task-tracker-escalation",
+    title: "Recurring Task Tracker & Escalation Automation",
+    category: "Workflow Automation / Business Operations",
+    filterCategory: "Automations",
+    tagline: "Google Sheets & Apps Script prototype tracking recurring tasks with escalation rules",
+    description:
+      "A Google Sheets prototype that tracks recurring employee tasks, records completion evidence, prepares the next task cycle, and sends overdue-task alerts and leadership escalations.",
+    detailedDescription:
+      "A Google Sheets prototype that tracks recurring employee tasks, records completion evidence, prepares the next task cycle, and sends overdue-task alerts and leadership escalations. Built with AI-assisted development for the Allo Innoware recruitment assessment prototype.",
+    highlights: [
+      "Daily working-day tasks and recurring 7-, 15-, and 30-day cycles with duplicate prevention",
+      "Single-point employee completion with evidence and timestamps, plus manager acknowledgement tracking",
+      "Automated time-driven 5-minute audit checks, grace-period alerts, and leadership escalations"
+    ],
+    features: [
+      "Daily working-day tasks and recurring 7-, 15-, and 30-day cycles.",
+      "Single-point employee completion with evidence and timestamps.",
+      "Separate manager acknowledgement and task-resolution tracking.",
+      "Scheduled checks approximately every five minutes.",
+      "Manager alerts after a configurable grace period.",
+      "Leadership escalation for missing acknowledgement or unresolved tasks.",
+      "Cycle and alert identifiers to control duplicate processing.",
+      "Eight isolated logic tests recorded as passing, supplemented by live workflow and email checks on 15 October 2026."
+    ],
+    tags: ["Google Sheets", "Google Apps Script", "MailApp", "Edit Triggers", "Time-driven Triggers"],
+    tech: ["Google Sheets", "Google Apps Script", "MailApp", "Edit Triggers", "Time-driven Triggers"],
+    liveUrl: "",
+    thumbnail: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+    badge: "Assessment • Apps Script",
+    accentColor: "from-emerald-500 to-cyan-600",
+    themeGlow: "rgba(16, 185, 129, 0.2)",
+    cardBgGradient: "from-emerald-950/30 via-[#0B0F19] to-slate-950",
+    cardBorderAccent: "hover:border-emerald-400/60",
+    projectContextType: "workflow",
+    metricLabel: "Assessment Prototype • 8 Tests Passing",
+    devNote: "Built with substantial AI assistance. Demonstrated using dummy employee data and candidate-only test emails. This is an assessment prototype, not a production system deployed at Allo.",
+    status: "Assessment prototype using dummy employee data and candidate-only test emails; 8 logic tests passed.",
+    assessmentContext: "Allo Innoware recruitment assessment prototype (Completed October 2026)",
+    isAssessment: true,
   },
   {
     id: "incoterms-2020-trade-engine",
@@ -456,11 +507,22 @@ export const CERTIFICATIONS_DATA: CertificationItem[] = [
   {
     id: "cert-ai-leaders",
     title: "AI for Business Leaders Bootcamp",
-    issuer: "Outskill",
-    year: "2024",
+    issuer: "GrowthSchool / SISINTY PRIVATE LIMITED",
+    year: "October 2026 (Grade: A)",
     skillsLearned: ["Generative AI Strategy", "Workflow Optimization", "AI Agent Deployment", "Enterprise Automation"],
     summary: "Intensive executive-level bootcamp focusing on evaluating high-ROI enterprise AI opportunities, deploying agentic workflows, and leveraging LLMs to optimize business processes.",
     badgeType: "ai",
+  },
+  {
+    id: "cert-ai-training-tripple-one",
+    title: "Artificial Intelligence Training",
+    issuer: "Tripple One Solutions",
+    credentialCode: "CERT-4D7D08DE-20AE-4977",
+    year: "August–September 2026",
+    skillsLearned: ["Artificial Intelligence", "Machine Learning Concepts", "Applied AI Tools", "Model Applications"],
+    summary: "Professional training program in artificial intelligence and applied methodologies covering AI tools, machine learning foundations, and real-world implementation workflows.",
+    badgeType: "ai",
+    verifiedLink: "https://www.creadefy.com/verify/CERT-4D7D08DE-20AE-4977",
   },
   {
     id: "cert-logistics-ocean",
@@ -613,11 +675,11 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     id: "bcom-education",
     role: "Bachelor of Commerce (B.Com) – Final Year",
     company: "Lala Lajpat Rai College",
-    period: "2024 – Present",
+    period: "2024 – 2027 Ongoing",
     type: "Education",
-    summary: "Specializing in commerce, accounting, business economics, and trade operations. Actively applying classroom theoretical concepts as an AI Generalist.",
+    summary: "Specializing in commerce, accounting, business economics, and trade operations. Actively applying classroom theoretical concepts as an AI Generalist with expected graduation in 2027.",
     achievements: [
-      "Pursuing honors-level commerce coursework with strong performance in business finance and management.",
+      "Final-year B.Com student (expected completion 2027) with coursework in commercial trade, business finance, and management.",
       "Proactively completed additional international trade and AI certifications concurrent with university curriculum.",
       "Active participant in collegiate trade, entrepreneurship, and technical development workshops."
     ],

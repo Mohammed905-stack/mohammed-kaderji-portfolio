@@ -23,13 +23,16 @@ import {
   Mic,
   X,
   Info,
-  BookOpen
+  BookOpen,
+  Code2,
+  FileSpreadsheet
 } from 'lucide-react';
 
 export interface AICapstoneProject {
   id: string;
   title: string;
   category: string;
+  filterCategory: 'AI Apps' | 'Automations';
   stack: string[];
   tech?: string[];
   overview: string;
@@ -79,6 +82,7 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
     id: "express-docs-rag-assistant",
     title: "Express Docs — AI Technical Documentation Assistant",
     category: "Agentic AI / RAG",
+    filterCategory: "AI Apps",
     badge: "Assessment • LangGraph RAG",
     executionIndicator: "Runs Locally • 78 Tests Passing",
     executionDetails: "FastAPI + LangGraph workflow running locally with FAISS vector store",
@@ -115,6 +119,7 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
     id: "aria-ai-voice-customer-support",
     title: "Aria — AI Voice Customer Support Assistant",
     category: "Voice AI / Customer Support",
+    filterCategory: "AI Apps",
     badge: "Assessment • Web Speech API",
     executionIndicator: "Assessment Prototype • Local",
     executionDetails: "Node.js/Express backend with Web Speech API and mock order lookup",
@@ -152,10 +157,11 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
   {
     id: "ai-personal-assistant-chatbot",
     title: "AI Personal Assistant",
-    category: "GENERATIVE AI / WORKFLOW AUTOMATION",
+    category: "GENERATIVE AI / PERSONAL ASSISTANT",
+    filterCategory: "AI Apps",
     badge: "Streamlit Cloud • Production",
-    stack: ["Python", "Streamlit", "Automation", "Assistant"],
-    tech: ["Python", "Streamlit", "Automation", "Assistant"],
+    stack: ["Python", "Streamlit", "Personal Assistant", "Prompt Engineering"],
+    tech: ["Python", "Streamlit", "Personal Assistant", "Prompt Engineering"],
     overview: "A productivity and workflow automation assistant built as an interactive web interface.",
     description: "A productivity and workflow automation assistant built as an interactive web interface.",
     executionDetails: "Streamlit cloud engine hosted at ai-personal-assistant-464q23nsnxufete6hooju5.streamlit.app",
@@ -178,7 +184,8 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
   {
     id: "ai-content-creator-application",
     title: "AI Content Creator",
-    category: "GENERATIVE AI / CONTENT AUTOMATION",
+    category: "GENERATIVE AI / CONTENT CREATOR",
+    filterCategory: "AI Apps",
     badge: "Streamlit Cloud • Production",
     stack: ["Python", "Streamlit", "Gemini API", "AI Content Generation"],
     tech: ["Python", "Streamlit", "Gemini API", "AI Content Generation"],
@@ -205,6 +212,7 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
     id: "ai-pdf-assistant-document-intelligence",
     title: "AI PDF Assistant",
     category: "DOCUMENT AI / RETRIEVAL & PROCESSING",
+    filterCategory: "AI Apps",
     badge: "Streamlit Cloud • Production",
     stack: ["Python", "Streamlit", "RAG", "Document AI"],
     tech: ["Python", "Streamlit", "RAG", "Document AI"],
@@ -231,6 +239,7 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
     id: "global-trade-ocean-bl-auditor",
     title: "Global Trade & Ocean B/L Document Auditor",
     category: "EXIM LOGISTICS & COMPLIANCE AI",
+    filterCategory: "AI Apps",
     tech: ["Python", "Streamlit", "Supply Chain", "Logistics Compliance"],
     stack: ["Python", "Streamlit", "Supply Chain", "Logistics Compliance"],
     description: "Autonomous Shipping Compliance Engine for freight forwarders and logistics teams to audit Ocean Bills of Lading, commercial invoices, and packing lists for discrepancies.",
@@ -257,6 +266,7 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
     id: "autonomous-linkedin-content-pipeline",
     title: "Autonomous LinkedIn Content Pipeline",
     category: "AI AUTOMATION & AGENT WORKFLOWS",
+    filterCategory: "Automations",
     badge: "n8n Cloud Zero-Touch",
     stack: ["n8n Cloud", "LangChain Nodes", "OpenAI Model", "LinkedIn OAuth2 API", "Google Sheets Trigger"],
     overview: "Autonomous pipeline that continuously polls Google Sheets for article links, condenses core theses via LangChain, restructures them into viral LinkedIn social copy with opening hooks and hashtags, and publishes directly to personal feed via OAuth2.",
@@ -276,6 +286,7 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
     id: "autonomous-telegram-customer-assistant",
     title: "24/7 Autonomous Telegram Customer Assistant",
     category: "AI AGENTS & CONVERSATIONAL BOTS",
+    filterCategory: "Automations",
     badge: "RoboClicks Bot • Memory",
     stack: ["Telegram Bot API (RoboClicks Bot)", "n8n Cloud", "LangChain Agent", "Google Sheets", "Window Buffer Memory"],
     overview: "High-availability conversational bot utilizing intent routing (Switch node) to handle transactional pricing ($20) and FAQ requests, while routing unstructured queries to a LangChain agent with conversation memory for multi-turn advisory roadmaps.",
@@ -295,6 +306,7 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
     id: "ai-customs-hs-code-auditor",
     title: "AI-Powered Customs & HS Code Classification Auditor",
     category: "TRADE COMPLIANCE & n8n AI AGENT",
+    filterCategory: "Automations",
     badge: "n8n Local • Gemini 3.6 Flash",
     stack: ["n8n (Local Instance)", "n8n AI Agent Node", "Google Gemini API", "Gemini 3.6 Flash", "Modular Trade Prompting"],
     tech: ["n8n (Local Instance)", "n8n AI Agent Node", "Google Gemini API", "Gemini 3.6 Flash", "Modular Trade Prompting"],
@@ -313,6 +325,42 @@ export const AI_CAPSTONE_PROJECTS: AICapstoneProject[] = [
     cardBgGradient: "from-amber-950/30 via-[#0B0F19] to-slate-950",
     cardBorderAccent: "hover:border-amber-400/60",
     contextType: "compliance"
+  },
+  {
+    id: "recurring-task-tracker-escalation",
+    title: "Recurring Task Tracker & Escalation Automation",
+    category: "Workflow Automation / Business Operations",
+    filterCategory: "Automations",
+    badge: "Assessment • Apps Script",
+    executionIndicator: "Assessment Prototype • 8 Tests Passing",
+    executionDetails: "Google Apps Script rules engine running on Google Sheets with time-driven triggers",
+    stack: ["Google Sheets", "Google Apps Script", "MailApp", "Edit Triggers", "Time-driven Triggers"],
+    tech: ["Google Sheets", "Google Apps Script", "MailApp", "Edit Triggers", "Time-driven Triggers"],
+    overview: "A Google Sheets prototype that tracks recurring employee tasks, records completion evidence, prepares the next task cycle, and sends overdue-task alerts and leadership escalations.",
+    description: "A Google Sheets prototype that tracks recurring employee tasks, records completion evidence, prepares the next task cycle, and sends overdue-task alerts and leadership escalations.",
+    detailedDescription: "A Google Sheets prototype that tracks recurring employee tasks, records completion evidence, prepares the next task cycle, and sends overdue-task alerts and leadership escalations. Built with AI-assisted development for the Allo Innoware recruitment assessment.",
+    features: [
+      "Daily working-day tasks and recurring 7-, 15-, and 30-day cycles.",
+      "Single-point employee completion with evidence and timestamps.",
+      "Separate manager acknowledgement and task-resolution tracking.",
+      "Scheduled checks approximately every five minutes.",
+      "Manager alerts after a configurable grace period.",
+      "Leadership escalation for missing acknowledgement or unresolved tasks.",
+      "Cycle and alert identifiers to control duplicate processing.",
+      "Eight isolated logic tests recorded as passing, supplemented by live workflow and email checks on 15 October 2026."
+    ],
+    devNote: "Built with substantial AI assistance. Demonstrated using dummy employee data and candidate-only test emails. This is an assessment prototype, not a production system deployed at Allo.",
+    status: "Assessment prototype using dummy employee data and candidate-only test emails; 8 logic tests passed.",
+    assessmentContext: "Allo Innoware recruitment assessment prototype (Completed October 2026)",
+    primaryButtonText: "Architecture & Assessment Details",
+    primaryButtonUrl: "",
+    thumbnail: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+    accentColor: "from-emerald-500 to-cyan-600",
+    themeGlow: "rgba(16, 185, 129, 0.2)",
+    cardBgGradient: "from-emerald-950/30 via-[#0B0F19] to-slate-950",
+    cardBorderAccent: "hover:border-emerald-400/60",
+    contextType: "workflow",
+    isAssessment: true
   }
 ];
 
@@ -717,6 +765,22 @@ export const getTechStackBadge = (tech: string) => {
       bg: 'bg-orange-950/20'
     };
   }
+  if (lower.includes('sheet') || lower.includes('excel')) {
+    return {
+      icon: <FileSpreadsheet className="w-3 h-3 shrink-0 text-emerald-400" />,
+      border: 'border-emerald-500/30 hover:border-emerald-500/60',
+      text: 'text-emerald-200',
+      bg: 'bg-emerald-950/20'
+    };
+  }
+  if (lower.includes('script') || lower.includes('mail') || lower.includes('trigger')) {
+    return {
+      icon: <Code2 className="w-3 h-3 shrink-0 text-cyan-400" />,
+      border: 'border-cyan-500/30 hover:border-cyan-500/60',
+      text: 'text-cyan-200',
+      bg: 'bg-cyan-950/20'
+    };
+  }
   if (lower.includes('prompt') || lower.includes('compliance')) {
     return {
       icon: <ShieldCheck className="w-3 h-3 shrink-0 text-amber-400" />,
@@ -733,7 +797,7 @@ export const getTechStackBadge = (tech: string) => {
   };
 };
 
-export type ProjectFilterType = 'All' | 'AI Apps' | 'n8n Automations';
+export type ProjectFilterType = 'All' | 'AI Apps' | 'Automations';
 
 export const ProjectsGallery: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<ProjectFilterType>('All');
@@ -752,23 +816,22 @@ export const ProjectsGallery: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedProjectForModal]);
 
-  const isN8nAutomation = (p: AICapstoneProject) =>
+  const isAutomation = (p: AICapstoneProject) =>
+    p.filterCategory === 'Automations' ||
     p.id === "autonomous-linkedin-content-pipeline" ||
     p.id === "autonomous-telegram-customer-assistant" ||
     p.id === "ai-customs-hs-code-auditor" ||
-    p.contextType === "workflow" ||
-    p.contextType === "telegram" ||
-    p.contextType === "compliance" ||
-    p.stack.some(s => s.toLowerCase().includes("n8n"));
+    p.id === "recurring-task-tracker-escalation";
 
-  const isAIApp = (p: AICapstoneProject) => !isN8nAutomation(p);
+  const isAIApp = (p: AICapstoneProject) =>
+    p.filterCategory === 'AI Apps' || !isAutomation(p);
 
   const filteredProjects = useMemo(() => {
     if (activeFilter === 'AI Apps') {
       return AI_CAPSTONE_PROJECTS.filter(isAIApp);
     }
-    if (activeFilter === 'n8n Automations') {
-      return AI_CAPSTONE_PROJECTS.filter(isN8nAutomation);
+    if (activeFilter === 'Automations') {
+      return AI_CAPSTONE_PROJECTS.filter(isAutomation);
     }
     return AI_CAPSTONE_PROJECTS;
   }, [activeFilter]);
@@ -776,7 +839,7 @@ export const ProjectsGallery: React.FC = () => {
   const counts = useMemo(() => ({
     all: AI_CAPSTONE_PROJECTS.length,
     aiApps: AI_CAPSTONE_PROJECTS.filter(isAIApp).length,
-    n8n: AI_CAPSTONE_PROJECTS.filter(isN8nAutomation).length,
+    automations: AI_CAPSTONE_PROJECTS.filter(isAutomation).length,
   }), []);
 
   const filterTabs = [
@@ -793,9 +856,9 @@ export const ProjectsGallery: React.FC = () => {
       icon: <Bot className="w-3.5 h-3.5" />
     },
     {
-      id: 'n8n Automations' as ProjectFilterType,
-      label: 'n8n Automations',
-      count: counts.n8n,
+      id: 'Automations' as ProjectFilterType,
+      label: 'Automations',
+      count: counts.automations,
       icon: <Workflow className="w-3.5 h-3.5" />
     }
   ];
@@ -979,28 +1042,41 @@ export const ProjectsGallery: React.FC = () => {
                 <div className="pt-4 border-t border-slate-800/80 space-y-2.5">
                   {project.isAssessment ? (
                     <>
-                      {/* Primary Button: View Source on GitHub */}
-                      <a
-                        href={project.primaryButtonUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        id={`source-btn-${project.id}`}
-                        className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold shadow-md flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 transition-all duration-200 group/btn interactive-element"
-                      >
-                        <Github className="w-4 h-4 text-slate-950" />
-                        <span>{project.primaryButtonText}</span>
-                      </a>
+                      {/* Primary Button: View Source on GitHub (if available) */}
+                      {project.primaryButtonUrl ? (
+                        <>
+                          <a
+                            href={project.primaryButtonUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            id={`source-btn-${project.id}`}
+                            className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold shadow-md flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 transition-all duration-200 group/btn interactive-element"
+                          >
+                            <Github className="w-4 h-4 text-slate-950" />
+                            <span>{project.primaryButtonText}</span>
+                          </a>
 
-                      {/* Secondary Button: Architecture & Assessment Details (Modal Trigger) */}
-                      <button
-                        type="button"
-                        onClick={() => setSelectedProjectForModal(project)}
-                        id={`details-btn-${project.id}`}
-                        className="w-full py-2 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/70 hover:border-cyan-500/40 transition-all duration-200 group/subbtn interactive-element cursor-pointer"
-                      >
-                        <Info className="w-3.5 h-3.5 text-cyan-400" />
-                        <span>Architecture & Assessment Details</span>
-                      </button>
+                          <button
+                            type="button"
+                            onClick={() => setSelectedProjectForModal(project)}
+                            id={`details-btn-${project.id}`}
+                            className="w-full py-2 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/70 hover:border-cyan-500/40 transition-all duration-200 group/subbtn interactive-element cursor-pointer"
+                          >
+                            <Info className="w-3.5 h-3.5 text-cyan-400" />
+                            <span>Architecture & Assessment Details</span>
+                          </button>
+                        </>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => setSelectedProjectForModal(project)}
+                          id={`details-btn-${project.id}`}
+                          className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold shadow-md flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 transition-all duration-200 group/btn interactive-element cursor-pointer"
+                        >
+                          <Info className="w-4 h-4 text-slate-950" />
+                          <span>Architecture & Assessment Details</span>
+                        </button>
+                      )}
                     </>
                   ) : project.id === "autonomous-linkedin-content-pipeline" ? (
                     <>

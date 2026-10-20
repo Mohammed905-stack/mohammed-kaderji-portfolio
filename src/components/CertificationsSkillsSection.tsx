@@ -86,7 +86,7 @@ export const CertificationsSkillsSection: React.FC = () => {
         <div>
           <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2.5">
             <Award className="w-5 h-5 text-cyan-400" />
-            <span>Professional Certifications</span>
+            <span>Professional Certifications ({CERTIFICATIONS_DATA.length})</span>
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -105,19 +105,24 @@ export const CertificationsSkillsSection: React.FC = () => {
                       {getBadgeIcon(cert.badgeType)}
                     </div>
                     
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-wrap items-center gap-2">
                       <span className="px-2.5 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 text-[11px] font-semibold">
                         {cert.year}
                       </span>
+                      {cert.credentialCode && (
+                        <span className="px-2 py-0.5 rounded-full bg-slate-900 border border-slate-700 text-slate-300 text-[10px] font-mono">
+                          ID: {cert.credentialCode}
+                        </span>
+                      )}
                       {cert.verifiedLink ? (
                         <a
                           href={cert.verifiedLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-1 text-[11px] text-cyan-300 bg-cyan-950/70 hover:bg-cyan-900/80 px-2 py-0.5 rounded border border-cyan-500/40 transition-colors interactive-element"
+                          className="flex items-center gap-1 text-[11px] text-cyan-300 bg-cyan-950/70 hover:bg-cyan-900/80 px-2.5 py-0.5 rounded border border-cyan-500/40 transition-colors interactive-element"
                         >
                           <ExternalLink className="w-3 h-3" />
-                          View Proof
+                          Verify Credential
                         </a>
                       ) : (
                         <span className="flex items-center gap-1 text-[11px] text-slate-300 bg-slate-900/80 px-2 py-0.5 rounded border border-slate-800">
@@ -163,7 +168,7 @@ export const CertificationsSkillsSection: React.FC = () => {
                         rel="noopener noreferrer"
                         className="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-1 interactive-element text-xs"
                       >
-                        <span>Open Official Credential</span>
+                        <span>Verify Credential</span>
                         <ExternalLink className="w-3.5 h-3.5" />
                       </a>
                     ) : (
